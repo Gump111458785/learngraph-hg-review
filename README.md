@@ -1,6 +1,6 @@
-# 冯甘雨：LearnGraph H/G 输入与输出审查
+# LearnGraph H/G 输入与输出审查
 
-冯甘雨负责的课程合作项目 **任务 2**：H 上传资料相关性与可采纳性审查、G 教学内容与来源核查，以及文件解析、引用定位和修订记录。
+负责的课程合作项目 **任务 2**：H 上传资料相关性与可采纳性审查、G 教学内容与来源核查，以及文件解析、引用定位和修订记录。
 
 这是个人 H/G 模块仓库。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
 
