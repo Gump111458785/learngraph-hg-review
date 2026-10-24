@@ -1,0 +1,15 @@
+[
+  {
+    "id": "python-types",
+    "title": "可变性演示资料（教学用自编样例）",
+    "source": "local-example://python-types",
+    "blocks": [
+      {
+        "id": "b0001",
+        "text": "Python 列表是可变序列，可以修改已有元素。元组是不可变序列，不能修改其元素引用。元组包含的可变对象本身仍可以改变。",
+        "paragraph": 1
+      }
+    ],
+    "extraction_notes": ["A 输入格式示例；实际上传资料须先经过 H 准入。"]
+  }
+]

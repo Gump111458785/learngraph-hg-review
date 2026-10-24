@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "review_id": "g-06a08bc42cea4ae588f6f1f54d34739b",
+  "created_at": "2026-10-24T13:15:00.692707+00:00",
+  "unit_id": "python-sequences-1",
+  "revision": 1,
+  "draft_hash": "a8bb8ad1663a3143206ff6972f73994ba8dff4cb22d361e634e0ed8e49526a76",
+  "context_hash": "93094535887be065fcb2612d0dbaca8a1dc0cc8d38beaec74feae9c1df0304bd",
+  "sources_hash": "a5b07fc06ee9b86c5b8caaa0005302fcfff71e80a3781b13818a6d3e3404020e",
+  "status": "revise",
+  "next_agent": "D",
+  "summary": "离线预置：有引用，但陈述与来源相反。",
+  "findings": [
+    {
+      "id": "issue-e836510b3c22432c06a8",
+      "origin": "model",
+      "category": "contradiction",
+      "severity": "error",
+      "target": {
+        "document_id": "python-sequences-1",
+        "block_id": "explanation",
+        "quote": "Python 列表是不可变序列，元组是可变序列。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 24,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence": {
+        "document_id": "python-types",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以修改已有元素。元组是不可变序列，不能修改其元素引用。元组包含的可变对象本身仍可以改变。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 60,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      },
+      "message": "列表和元组的可变性写反，与引用原文冲突。",
+      "suggestion": "将正文改为列表可变、元组不可变，保留对应引用。"
+    }
+  ],
+  "citation_checks": [
+    {
+      "section_id": "explanation",
+      "citation_index": 0,
+      "valid": true,
+      "claim": {
+        "document_id": "python-sequences-1",
+        "block_id": "explanation",
+        "quote": "Python 列表是不可变序列，元组是可变序列。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 24,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence": {
+        "document_id": "python-types",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以修改已有元素。元组是不可变序列，不能修改其元素引用。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 43,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      },
+      "error": null
+    }
+  ],
+  "checked_objectives": [
+    "区分 Python 列表与元组的可变性"
+  ],
+  "media_scope": "本次未提供媒体文本，未执行媒体一致性核查。",
+  "usage": {
+    "model": "offline-fixture-NOT-A-MODEL-RUN",
+    "response_id": "scripted-fixture",
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": null,
+    "elapsed_seconds": 0.0
+  },
+  "revision_record": null
+}

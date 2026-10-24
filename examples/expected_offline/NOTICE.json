@@ -1,0 +1,6 @@
+{
+  "mode": "scripted-offline-fixture",
+  "real_api_calls": 0,
+  "proves": "格式、引用定位、过滤、路由与修订记录可运行。",
+  "does_not_prove": "模型审查准确性、提示注入防御效果、真实 API 账号可用性或费用。"
+}

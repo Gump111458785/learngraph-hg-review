@@ -1,0 +1,24 @@
+{
+  "unit_id": "python-sequences-1",
+  "revision": 1,
+  "delivered": false,
+  "sections": [
+    {
+      "id": "explanation",
+      "text": "Python 列表是不可变序列，元组是可变序列。",
+      "citations": [
+        {
+          "source_id": "python-types",
+          "source_anchor": {
+            "block_id": "b0001",
+            "quote": "Python 列表是可变序列，可以修改已有元素。元组是不可变序列，不能修改其元素引用。",
+            "occurrence": 0
+          },
+          "claim_quote": "Python 列表是不可变序列，元组是可变序列。",
+          "claim_occurrence": 0
+        }
+      ]
+    }
+  ],
+  "media": []
+}

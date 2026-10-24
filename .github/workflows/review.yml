@@ -1,0 +1,18 @@
+name: H/G standalone checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -e ".[dev]"
+      - run: ruff check src tests examples/offline_demo.py integration
+      - run: python -m pytest -q
+      - run: python examples/offline_demo.py --out outputs/ci-demo
+      - run: python -m learngraph_review schemas --out outputs/ci-schemas.json
