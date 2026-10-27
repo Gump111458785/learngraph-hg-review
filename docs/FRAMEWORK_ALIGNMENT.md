@@ -8,7 +8,7 @@
 
 | 文件 | 对齐内容 |
 |---|---|
-| `pyproject.toml`、`requirements.txt` | 版本升为 0.2.0；库允许 OpenAI SDK `>=2,<4`，安装默认固定团队 3.37.0 |
+| `pyproject.toml`、`requirements.txt` | 版本升为 0.2.0；库允许 OpenAI SDK `>=2,<4`，安装默认固定团队 3.37.0；显式声明测试使用的 httpx 0.28.1，SDK 3 不再间接安装它 |
 | `src/learngraph_review/team_adapter.py` | 映射 R1 的 H/G 状态与报告路径；兼容严格旧合同；根据消费方工程定位相对路径，支持 src/root/安装包；保存失败抛出 ReviewError；公共 G issues 不再自动附加逐字正文或报告路径 |
 | `.env.example` | 增加可选绝对 `HG_PROJECT_ROOT`，非标准嵌入可明确指定路径基准 |
 | `tests/test_adapter_alignment.py` | 13 项回归：新旧合同、部分采纳、G 三种状态、相对路径、保存失败和公共摘要中的逐字引句处理 |
