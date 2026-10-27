@@ -8,6 +8,15 @@ from learngraph_review.models import Context, LessonDraft, Material, Usage
 EXAMPLES = Path(__file__).resolve().parents[1] / "examples"
 
 
+@pytest.fixture(autouse=True)
+def offline_environment(monkeypatch):
+    monkeypatch.setenv("PYTHON_DOTENV_DISABLED", "1")
+    monkeypatch.setenv("HG_REVIEW_MODE", "mock")
+    monkeypatch.setenv("HG_SOURCES_FILE", "")
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("HG_PROJECT_ROOT", raising=False)
+
+
 def load(name):
     return json.loads((EXAMPLES / name).read_text(encoding="utf-8"))
 

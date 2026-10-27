@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -21,12 +22,46 @@ def review_mode() -> str:
     return mode
 
 
+def project_root() -> Path:
+    """Resolve the consuming project, independently of the caller's working directory.
+
+    Team public entry points import core.llm before using this adapter. Prefer
+    that project over the location of an editable/wheel-installed personal package.
+    """
+    configured = os.getenv("HG_PROJECT_ROOT", "").strip()
+    if configured:
+        return Path(configured).expanduser().resolve()
+    team_file = getattr(sys.modules.get("core.llm"), "__file__", None)
+    if team_file:
+        return Path(team_file).resolve().parents[1]
+    package = Path(__file__).resolve().parent
+    if package.parent.name == "src":
+        return package.parent.parent
+    if (package.parent / "pyproject.toml").is_file():
+        return package.parent
+    # A wheel has no adjacent project metadata. Respect the invoking application.
+    return Path.cwd()
+
+
+def project_path(value: str) -> Path:
+    path = Path(value).expanduser()
+    return path if path.is_absolute() else project_root() / path
+
+
+def _metadata(model, **values) -> dict:
+    """R1 metadata is optional; retain support for older strict public contracts."""
+    return {name: value for name, value in values.items() if name in model.model_fields}
+
+
 def _save(name: str, value) -> Path:
-    directory = Path(os.getenv("HG_REVIEW_OUTPUT_DIR", "outputs/hg"))
-    directory.mkdir(parents=True, exist_ok=True)
+    directory = project_path(os.getenv("HG_REVIEW_OUTPUT_DIR", "outputs/hg"))
     path = directory / name
-    with path.open("x", encoding="utf-8") as output:
-        json.dump(value, output, ensure_ascii=False, indent=2)
+    try:
+        directory.mkdir(parents=True, exist_ok=True)
+        with path.open("x", encoding="utf-8") as output:
+            json.dump(value, output, ensure_ascii=False, indent=2)
+    except OSError as exc:
+        raise ReviewError("H/G 审查记录保存失败；未完成持久化，不予交付") from exc
     return path
 
 
@@ -65,6 +100,12 @@ def run_h_live(request):
                 status=status,
                 reason=reason,
                 mode="live",
+                **_metadata(
+                    FileReviewReport,
+                    review_status=report.status,
+                    report_path=str(saved),
+                    approved_sources_path=str(handoff),
+                ),
                 cited_locations=[
                     d.location.model_dump_json() for d in report.decisions if d.decision == "accept"
                 ],
@@ -91,7 +132,7 @@ def run_g_live(draft, evidence):
             "G 真实审查需要 HG_SOURCES_FILE 原文数组；不能将 EvidenceItem.claim 当原文"
         )
     try:
-        raw = json.loads(Path(registry_path).read_text(encoding="utf-8"))
+        raw = json.loads(project_path(registry_path).read_text(encoding="utf-8"))
         originals = [Material.model_validate(item) for item in raw]
     except (OSError, ValueError, TypeError) as exc:
         raise ReviewError("G 来源原文文件无法读取或格式无效") from exc
@@ -142,7 +183,7 @@ def run_g_live(draft, evidence):
     # Keep the contract's issues as strings so D and the group's routing keep working.
     issues = [
         f"[{f.severity}/{f.category}] {f.target.block_id} 字符 {f.target.start}:{f.target.end} "
-        f"原文={f.target.quote!r}：{f.message} 建议：{f.suggestion}；完整证据记录：{record_path}"
+        f"问题：{f.message} 建议：{f.suggestion}"
         for f in report.findings
     ]
     return LessonAudit(
@@ -151,4 +192,5 @@ def run_g_live(draft, evidence):
         issues=issues,
         checked_source_ids=cited,
         mode="live",
+        **_metadata(LessonAudit, review_status=report.status, report_path=str(record_path)),
     )

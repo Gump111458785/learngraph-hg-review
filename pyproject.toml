@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "learngraph-review"
-version = "0.1.0"
+version = "0.2.0"
 description = "LearnGraph task 2: H input review and G grounded lesson review"
 requires-python = ">=3.10"
 dependencies = [
-  "openai>=2.0,<3",
+  "openai>=2.0,<4",
   "pydantic>=2.10,<3",
   "python-dotenv>=1.0,<2",
   "pypdf>=5.0,<7",

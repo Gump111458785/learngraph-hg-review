@@ -1,13 +1,14 @@
 import json
+from pathlib import Path
 
 import pytest
 from agents.g_lesson_audit import run_g
 from agents.h_file_review import run_h
-from conftest import FixtureGateway, g_result, h_result
 from core import llm
 from core.contracts import EvidenceItem, LearningRequest
 from core.contracts import LessonDraft as TeamDraft
 from core.contracts import LessonSection as TeamSection
+from tests.hg.fixtures import FixtureGateway, g_result, h_result
 
 from learngraph_review import ReviewService, extract_file
 from learngraph_review.errors import ReviewError
@@ -29,6 +30,9 @@ def test_public_h_live_returns_contract_and_persists_locations(tmp_path, monkeyp
         )
     )
     assert result[0].mode == "live" and result[0].status == "accepted"
+    assert result[0].review_status == "accept"
+    assert Path(result[0].report_path).is_file()
+    assert Path(result[0].approved_sources_path).is_file()
     assert json.loads(result[0].cited_locations[0])["quote"] == "Python 列表可变。"
     assert len(list((tmp_path / "records").glob("*.json"))) == 2
 
@@ -98,6 +102,7 @@ def test_public_g_uses_original_and_preserves_lesson_contract(tmp_path, monkeypa
     monkeypatch.setattr(llm, "get_review_service", lambda: ReviewService(gateway))
     result = run_g(draft, evidence)
     assert result.passed and result.mode == "live" and result.lesson_id == "L1"
+    assert result.review_status == "pass" and Path(result.report_path).is_file()
     assert (
         gateway.calls[0]["payload"]["sources"][0]["blocks"][0]["text"] == sources[0].blocks[0].text
     )
@@ -129,6 +134,7 @@ def test_public_h_partial_never_admits_entire_file(tmp_path, monkeypatch):
         LearningRequest(session_id="test", topic="Python", goal="目标", uploaded_files=[str(path)])
     )[0]
     assert report.status == "unreviewed" and report.mode == "live"
+    assert report.review_status == "partial" and Path(report.approved_sources_path).is_file()
     assert "A 不得读取整个原文件" in report.reason
     handoff = next((tmp_path / "records").glob("*-sources.json"))
     assert len(json.loads(handoff.read_text(encoding="utf-8"))[0]["blocks"]) == 1

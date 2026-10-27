@@ -2,7 +2,7 @@
 
 负责的课程合作项目 **任务 2**：H 上传资料相关性与可采纳性审查、G 教学内容与来源核查，以及文件解析、引用定位和修订记录。
 
-这是个人 H/G 模块仓库。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
+这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.2.0**，已对齐 2026-10-27 团队 R1 框架（`d129c60`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
 
 ## 做了什么
 
@@ -27,6 +27,7 @@
 | [cli.py](src/learngraph_review/cli.py) | `extract/h/handoff/g/schemas` 命令行 |
 | [tests/](tests/) | 独立模块测试与离线 fixture，不依赖团队的 A/B/C/D/E/F 或 core |
 | [examples/](examples/) | 主题、资料、来源、错误稿、修订稿与离线演示；`expected_offline/` 保存预置记录 |
+| [integration/verify_framework.py](integration/verify_framework.py) | 将本模块放入团队工程副本，执行全量离线测试并保存日志、JUnit 和源码哈希 |
 | [integration/learngraph/](integration/learngraph/) | 冯甘雨负责的两个公共 Agent 入口、文件解析入口、core 工厂增补片段及公共接入测试，供复制到团队主工程 |
 | [docs/task2-hg.md](docs/task2-hg.md) | 详细协议、定位方式、文件限制和联调约定；其中 core/agents 等路径指团队主工程 |
 | [pyproject.toml](pyproject.toml)、[.env.example](.env.example) | 安装依赖、模型/超时配置模板 |
@@ -36,7 +37,7 @@
 建议使用团队约定的 Python 3.13，在已激活的独立环境中执行：
 
 ```bash
-python -m pip install -e ".[dev]"
+python -m pip install -r requirements.txt
 python -m pytest -q
 python examples/offline_demo.py --out outputs/offline-demo
 python -m learngraph_review schemas --out outputs/schemas.json
@@ -45,7 +46,7 @@ python -m learngraph_review extract examples/upload_note.txt --id python-types -
 
 离线演示预期：`H=partial` → `G1=revise` → `G2=pass`。第一步排除广告块；错误稿将列表/元组可变性写反，随后使用修订稿重新检查。
 
-演示结论由 `OfflineFixtureGateway` 预置，不发送 API 请求。它验证格式、过滤、引用位置和路由，不证明真实模型判断准确。本独立仓库已在 Python 3.13 环境下通过 **54 项测试**。原团队工程曾通过 96 项全量测试；这两个测试范围分别记录，不混用计数。
+演示结论由 `OfflineFixtureGateway` 预置，不发送 API 请求。它验证格式、过滤、引用位置和路由，不证明真实模型判断准确。本独立仓库在 Python 3.13、OpenAI SDK **2.54.0 / 3.37.0** 下分别通过 **72 项测试**；将新版模块放入团队 R1 框架副本后通过 **120 项全量测试**。安装文件默认固定团队的 `openai==3.37.0`，库依赖允许 `>=2,<4`。这些结果验证离线协议和程序行为，未执行真实付费调用。完整基线、变更与复现步骤见 [框架对齐记录](docs/FRAMEWORK_ALIGNMENT.md)。
 
 ## 真实 OpenAI API 使用
 
@@ -68,21 +69,23 @@ python -m learngraph_review g --context examples/context.json --lesson examples/
 
 ## 团队主工程接入
 
-按 [integration/README.md](integration/README.md) 将接入文件放到团队工程，保留公共签名：
+团队 R1 已内置本模块，直接在**团队工程根目录**安装它自己的 `requirements.txt` 即可。个人仓库保留 `src/learngraph_review/`，团队使用根目录 `learngraph_review/`；各工程只保留一份运行包，避免两个可编辑安装相互遮蔽。后续同步和验证见 [integration/README.md](integration/README.md)。公共签名保持：
 
 ```python
 run_h(request: LearningRequest) -> list[FileReviewReport]
 run_g(draft: LessonDraft, evidence: list[EvidenceItem]) -> LessonAudit
 ```
 
-团队入口默认 `HG_REVIEW_MODE=mock`，改为 `live` 才调用真实 API。G 还需配置 `HG_SOURCES_FILE`，提供与 A 的 source_id/locator 对应的**实际原文 Material 数组**，不能把 A 的 claim 摘要当原文。详细记录默认写入 `outputs/hg/`。
+R1 公共报告已支持 `review_status`、`report_path`，H 还返回 `approved_sources_path`。H 部分采纳时仍保留文件级 `unreviewed`，只把采纳块写入交接 JSON；G 的 `needs_review` 可由主图立即阻塞。公共 G `issues` 不再自动拼接逐字正文和本地文件路径，完整定位保存在详细报告。适配层也兼容缺少这些可选字段的旧公共合同。
 
-公共 v0.1 合同只有文件级准入和来源 ID：H 部分采纳仍返回 `unreviewed` 并提供采纳块 JSON；G 的公共定位对应合并提取文本。精确引句/页段定位、严格版本绑定通过内部丰富模型使用，不能宣称团队主图已自动使用全部能力。
+团队入口默认 `HG_REVIEW_MODE=mock`，改为 `live` 才调用真实 API。G 还需配置 `HG_SOURCES_FILE`，提供与 A 的 source_id/locator 对应的**实际原文 Material 数组**，不能把 A 的 claim 摘要当原文。详细记录默认写入 `outputs/hg/`。相对路径以团队项目根目录为基准；非标准嵌入方式可设置 `HG_PROJECT_ROOT` 为绝对项目目录。
+
+公共 D 目前只提供来源 ID，公共 G 的定位因此对应合并提取文本；精确引句/页段定位、严格版本绑定仍通过内部丰富模型使用。团队主图负责历史交付保护，不能宣称它已自动使用所有内部能力。
 
 本仓库不包含其他成员 Agent 或团队的 core、SQLite、Streamlit 主工程；适配文件与公共接入测试须在已有团队工程中运行。独立 CLI 和 `tests/` 可直接运行。
 
 ## 已知范围
 
-真实付费 API 联调尚未执行；目前的验证依据为离线测试和预置演示。A 的真实上传资料交接、Streamlit 保存上传字节及完整真实闭环仍待团队联调。
+真实付费 API 联调尚未执行；目前的验证依据为离线测试和预置演示。团队 R1 已保存真实上传字节并提供隔离和大小检查；H→A 的采纳块接入、G 的真实来源注册表与完整真实闭环仍待对应成员联调。当前主图会在 H→A 未接通处明确阻塞。
 
 不执行 OCR，不直接检查图片/音视频二进制内容；H 采纳表示候选资料准入，不代表已验证网站身份或全部事实。个人仓库未包含 API Key、个人上传文件、运行数据库或其他成员的实现代码。

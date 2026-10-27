@@ -6,6 +6,10 @@
 补充上传资料进入 A 之前的 H，同时实现 D 之后、E 之前的 G。
 不实现 A 的联网检索、D 的教材生成、E/F 的出题评分或组长负责的完整 LangGraph 主流程。
 
+## 2026-10-27 R1 对齐
+
+个人包 0.2.0 已对齐团队 `d129c60`：SDK 依赖放宽到 `>=2,<4`，安装默认固定团队 3.37.0；个人使用 src 布局，团队使用根目录单份包。新增公共状态/报告路径映射、项目根目录路径解析、保存失败阻断，并兼容旧公共合同。独立 72 项测试在 SDK 2.54.0 与 3.37.0 均通过，替换模块的团队副本 120 项通过。复现与接入步骤见 [框架对齐记录](FRAMEWORK_ALIGNMENT.md) 和 [integration/README.md](../integration/README.md)。
+
 ## 交付与验收
 
 | 图片中的要求 | 实现与验收依据 |
@@ -122,19 +126,19 @@ python -m learngraph_review g --context examples/context.json --lesson examples/
 `HG_REVIEW_MODE=mock`（默认）保留原有 Mock 示例；选择 `live` 后调用实际 API，
 缺少 Key、原文或实际文件会明确失败，不会退回 Mock 并标成 live。
 公共入口由 `core/llm.get_review_service()` 创建真实服务，独立命令行始终按 API 模式执行。
-完整细节保存在 `HG_REVIEW_OUTPUT_DIR`（默认 outputs/hg）中，每轮使用新文件，公共合同只承载摘要。
+完整细节保存在 `HG_REVIEW_OUTPUT_DIR`（默认 outputs/hg）中，每轮使用新文件。相对输出目录与 `HG_SOURCES_FILE` 基于团队项目根目录；非标准嵌入方式可用 `HG_PROJECT_ROOT` 指定绝对根目录。保存失败抛出 `ReviewError`，由主图阻断。公共合同承载摘要和可选状态/路径元数据。
 
 H 公共报告：全采纳=accepted，全拒绝=excluded；部分采纳和待复核=unreviewed。
 原因是 v0.1 的文件级公共协议不能绑定块级准入，不能把含拒绝块的原文件整体交给 A。
-报告 reason 提供仅已采纳块的 Material 数组 JSON 路径，A 负责人后续读取这个文件即可接入；
-本 PR 不修改 A 当前“真实上传接入尚未实现”的显式报错。
-Streamlit 当前仍只传文件名，没有保存文件字节，故不能据此声称上传链路已经完成。
+R1 在 reason 之外新增 `review_status`、`report_path` 和 `approved_sources_path`，后者指向仅已采纳块的 Material 数组 JSON；A 负责人应读取该文件，不能重新读取含拒绝块的整个原文件。
+团队 Streamlit 现已保存真实上传字节，并提供隔离、大小限制和解析预检；但 A 尚未消费采纳块，主图仍在 H→A 待对接处阻塞。
 
 G 公共入口要求 `HG_SOURCES_FILE` 指向 **Material 数组 JSON**，由 A/联调者提供真实提取原文。
 其中 Material.id 对应 EvidenceItem.source_id，Material.source 与 EvidenceItem.locator 的 `#` 前缀一致。
 不能只把 EvidenceItem.claim 复制为原文。缺少或不匹配时阻断，组长的 ValueError guard 会持久化 blocked。
 v0.1 的 D 只有来源 ID，公共适配层因此使用来源级引用，位置对应合并提取文本；
 精确引句和 PDF 页/段定位能力通过下面的丰富库接口使用，待上下游协商后再扩展公共合同。
+R1 的 G 公共报告也有 `review_status`、`report_path`，`needs_review` 立即阻塞；公共 issues 不自动附带逐字正文和本地报告路径，完整定位在本地 JSON 中。
 公共教案目前也没有 revision/delivered 字段，历史交付保护仍由组长主图承担；
 本模块的严格版本绑定与修订对比仅对使用内部 LessonDraft/GReport 的调用方生效。
 
