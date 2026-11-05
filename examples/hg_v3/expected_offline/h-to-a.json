@@ -1,6 +1,6 @@
 [
   {
-    "id": "src-d82020724cce17c9",
+    "id": "src-dcdf6407958bd561",
     "title": "mixed-material.docx",
     "source": "mixed-material.docx",
     "blocks": [
@@ -15,7 +15,7 @@
     "extraction_notes": [
       "提取正文段落和表格行；paragraph 为正文/表格行顺序编号。",
       "不含页眉页脚、批注、文本框及图片内文字；未检查视觉排版。",
-      "候选资料由 H 准入：h-51e5a00a032e4662906a9c6156855edf"
+      "候选资料由 H 准入：h-231275bfff364bfaa05d9835e701ada8"
     ]
   }
 ]

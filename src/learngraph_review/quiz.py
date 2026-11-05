@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from typing import Literal
 from uuid import uuid4
 
-from pydantic import Field
+from pydantic import Field, ValidationError, create_model
 
 from .errors import ReviewError
 from .locations import locate
@@ -80,6 +80,9 @@ needs_review，禁止无依据 pass。通过项必须有 lesson_anchor 或 sourc
 lesson_anchor 定位 lesson_blocks；source_anchor 定位 sources 中的真实块，两种定位均须逐字引用。
 来源编号和来源 anchor 必须同时提供或同时为空。不得捏造引用或偏移。
 checked_objectives 逐字覆盖 context.objectives。不要把原教案审核通过当作练习必然通过。
+不要要求单道练习穷尽整份教案的所有细节；
+围绕当前学习目标和题目条件检查。准确的简洁回答可以通过，不能仅因措辞或省略可选拓展
+而返修。评分规则不能要求题干未提出、与学习目标无关的额外知识。
 """
 )
 
@@ -99,17 +102,60 @@ def review_quiz(
     source_map = {s.id: s for s in sources}
     if not sources or len(source_map) != len(sources):
         raise ReviewError("练习审核缺少原文或原文编号重复")
-    result, usage = service.gateway.run(
-        model=service.settings.model_g,
-        instructions=QUIZ_PROMPT,
-        payload={
-            "context": context.model_dump(),
-            "quiz": quiz.model_dump(),
-            "lesson_blocks": [b.model_dump() for b in lesson_blocks],
-            "sources": [s.model_dump() for s in sources],
-        },
-        schema=QuizModelResult,
+    # Constrain the SDK schema too: real responses paraphrased this field, which
+    # made their objective coverage impossible to bind to this exact request.
+    source_anchor = create_model(
+        "ProvidedSourceAnchor",
+        __base__=Anchor,
+        block_id=(Literal[tuple(sorted({b.id for s in sources for b in s.blocks}))], ...),
     )
+    lesson_anchor = create_model(
+        "ProvidedLessonAnchor",
+        __base__=Anchor,
+        block_id=(Literal[tuple(b.id for b in lesson_blocks)], ...),
+    )
+    variants = []
+    for component in ("prompt", "reference_answer", "rubric"):
+        target = create_model(
+            component.title().replace("_", "") + "Target",
+            __base__=Anchor,
+            block_id=(Literal[component], ...),
+        )
+        variants.append(
+            create_model(
+                component.title().replace("_", "") + "Check",
+                __base__=ComponentResult,
+                component=(Literal[component], ...),
+                target=(target, ...),
+                source_id=(Literal[tuple(source_map)] | None, ...),
+                source_anchor=(source_anchor | None, ...),
+                lesson_anchor=(lesson_anchor | None, ...),
+            )
+        )
+    component_type = variants[0] | variants[1] | variants[2]
+    response_schema = create_model(
+        "QuizModelResult",
+        __base__=QuizModelResult,
+        checks=(list[component_type], Field(min_length=3, max_length=3)),
+        checked_objectives=(
+            list[Literal[tuple(context.objectives)]],
+            Field(min_length=len(context.objectives), max_length=len(context.objectives)),
+        ),
+    )
+    try:
+        result, usage = service.gateway.run(
+            model=service.settings.model_g,
+            instructions=QUIZ_PROMPT,
+            payload={
+                "context": context.model_dump(),
+                "quiz": quiz.model_dump(),
+                "lesson_blocks": [b.model_dump() for b in lesson_blocks],
+                "sources": [s.model_dump() for s in sources],
+            },
+            schema=response_schema,
+        )
+    except ValidationError as exc:
+        raise ReviewError("练习模型结果不符合当前目标与审核协议") from exc
     if sorted(result.checked_objectives) != sorted(context.objectives):
         raise ReviewError("练习审核未完整覆盖目标")
     if sorted(c.component for c in result.checks) != ["prompt", "reference_answer", "rubric"]:

@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "review_id": "g-8af376bd067d4ef6b482281a45285b5f",
+  "created_at": "2026-11-05T07:28:15.049657+00:00",
+  "unit_id": "L1",
+  "revision": 1,
+  "draft_hash": "66d526935c70f61ce6579534f768a9c6023c3b3e71ba2f9d49efe913e42ba698",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "sources_hash": "2c84041352a2c5a675bbccad02552b6d5a8454b8e42e4cff90226b058a5ea229",
+  "status": "revise",
+  "next_agent": "D",
+  "summary": "对 D 的单节内容及可用媒体进行核查，聚焦来源支撑、课程目标一致性、以及明显错误。当前材料显示：节段1存在断言“没有任何测试或额外资料也能保证所有程序使用元组后运行速度提高十倍”与已给出来源文本在说明“Python 列表是可变序列…元组是不可变序列”的事实不冲突，但该断言缺乏证据支持且与来源不符，属于重要主张且未被引用覆盖。媒体文本为空，因此不涉及媒体核验。需要人工复核以确保引用定位正确、主张与证据一致，并在必要时补充来源或修正表述。",
+  "findings": [
+    {
+      "id": "issue-caf99150f7c4db45e746",
+      "origin": "model",
+      "category": "obvious_error",
+      "severity": "error",
+      "target": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "没有任何测试或额外资料也能保证所有程序使用元组后运行速度提高十倍。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 33,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "reference",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "message": "该断言缺乏可验证的测试证据，且与可获得的来源描述不一致，属于重要主张的证据缺失。请提供具体的测试或课程材料来支撑，或将表述改为“在某些条件下可能性存在，需进一步测试确认”。",
+      "suggestion": "补充或替换为可证实的语句，如“在某些场景下，使用元组可能带来微幅性能变化，具体要看程序进一步实现”，并在课程材料中附上可核验的测试结果或引用。"
+    }
+  ],
+  "citation_checks": [
+    {
+      "section_id": "section-1",
+      "citation_index": 0,
+      "valid": true,
+      "claim": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "没有任何测试或额外资料也能保证所有程序使用元组后运行速度提高十倍。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 33,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "reference",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "error": null
+    }
+  ],
+  "checked_objectives": [
+    "能区分列表和元组的可变性"
+  ],
+  "media_scope": "本次未提供媒体文本，未执行媒体一致性核查。",
+  "usage": {
+    "model": "gpt-5-nano-2025-08-07",
+    "response_id": "resp_0580c25fda896162016aec300aefc087d0b0c85aef073c5795",
+    "input_tokens": 1565,
+    "cached_input_tokens": 0,
+    "output_tokens": 473,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00026745,
+    "elapsed_seconds": 4.7
+  },
+  "revision_record": null
+}

@@ -1,0 +1,53 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "reference_answer": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "accepted_keywords": [],
+        "rubric": "只有回答元组可直接替换元素、列表不可替换才给满分；说列表可变一律零分。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "prompt: 题干与已给教案目标一致，但缺少对“直接替换已有元素”的限定条件的清晰指引，存在潜在偷换。需要明确问法：在不改变容器绑定的前提下，是否允许直接替换元素；并给出更清晰的判断标准。；建议：请在题干中增加限定：在不改变容器引用、且不创建新对象的前提下，是否可以通过下标赋值直接替换元素。确保与教案中“列表可变、元组不可变”的表述一致。",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:27; report=quiz-g-09cfdd1daf074f5d9250bf4b0cb1cafb.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "reference_answer: 参考答案过于简短，未充分区分“直接替换已有元素”的正确性以及在何种容器中成立，应基于教案完整断言。；建议：将参考答案扩展为：列表可直接替换已有元素（下标赋值），因为列表是可变序列；元组不允许直接替换元素，因为元组是不可变序列。并强调不涉及内部对象若可变性。",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:40; report=quiz-g-09cfdd1daf074f5d9250bf4b0cb1cafb.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "rubric: 评分规则与正确答案不一致；当前 rubric 似乎错误地将“列表可变”视为错误，需要与正确答案一致。；建议：将 rubric 调整为：若回答“列表可直接替换元素”，且解释符合“列表可变性”的事实，得满分；若回答“元组可替换”，或未提及原因，或仅描述可变性而未指明下标赋值，按部分正确处理。",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:35; report=quiz-g-09cfdd1daf074f5d9250bf4b0cb1cafb.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-09cfdd1daf074f5d9250bf4b0cb1cafb.json"
+  }
+}

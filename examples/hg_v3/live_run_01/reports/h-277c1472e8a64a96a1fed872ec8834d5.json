@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "review_id": "h-277c1472e8a64a96a1fed872ec8834d5",
+  "created_at": "2026-11-05T07:27:55.525816+00:00",
+  "material_id": "src-8c6b44b14054203b",
+  "material_hash": "ee6b99a8a6048db5ace7ddd2e1fafdd9c17ad8ae46c9802194be0dcfdcbd9c79",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "status": "partial",
+  "summary": "对 material.block_中的内容进行相关性与文本质量评估，逐块给出决策。结果仅为候选证据的可采纳性判断，不代表事实核验。",
+  "decisions": [
+    {
+      "block_id": "b0001",
+      "decision": "accept",
+      "relevance": "direct",
+      "reason": "块文明确描述了 Python 列表与元组的可变性及容器自身绑定的概念，与主题目标直接相关，可作为学习证据的候选内容。",
+      "anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0
+      },
+      "suggestion": "保留此段作为核心定义，确保后续示例与说明严格对应“可变性”和“容器绑定”的区分；如需扩展，请添加一个示例强调“不可变性不等同于内部对象可变性”的区分。",
+      "location": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    },
+    {
+      "block_id": "b0002",
+      "decision": "reject",
+      "relevance": "irrelevant",
+      "reason": "该段标题为广告且与 Python 列表、元组及学习目标无关，属于干扰信息，不应作为学习证据来源。",
+      "anchor": {
+        "block_id": "b0002",
+        "quote": "广告：今天购买虚构健身课程享折扣。本段与 Python 列表、元组及学习目标无关，不应进入课程证据。",
+        "occurrence": 0
+      },
+      "suggestion": "若需保持材料整洁，应删除或单独标注为广告段，不计入课程证据。",
+      "location": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "b0002",
+        "quote": "广告：今天购买虚构健身课程享折扣。本段与 Python 列表、元组及学习目标无关，不应进入课程证据。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 50,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 2,
+        "source_start": 0
+      }
+    }
+  ],
+  "usage": {
+    "model": "gpt-5-nano-2025-08-07",
+    "response_id": "resp_09bd74e9c97ee8ff016aec2ff6ba8c87d0b967c277655966a3",
+    "input_tokens": 915,
+    "cached_input_tokens": 0,
+    "output_tokens": 397,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00020455,
+    "elapsed_seconds": 7.308
+  }
+}

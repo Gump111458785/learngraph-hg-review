@@ -1,0 +1,21 @@
+[
+  {
+    "id": "src-11b1965c373e3867",
+    "title": "mixed-material.docx",
+    "source": "mixed-material.docx",
+    "blocks": [
+      {
+        "id": "b0001",
+        "text": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    ],
+    "extraction_notes": [
+      "提取正文段落和表格行；paragraph 为正文/表格行顺序编号。",
+      "不含页眉页脚、批注、文本框及图片内文字；未检查视觉排版。",
+      "候选资料由 H 准入：h-7b6543c0bb2e4709b5a50496fb1a22f4"
+    ]
+  }
+]

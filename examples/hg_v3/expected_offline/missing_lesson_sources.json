@@ -5,7 +5,7 @@
       {
         "category": "evidence",
         "reason": "当前教案缺少可核对的会话原文",
-        "evidence": "缺失来源编号：src-d82020724cce17c9",
+        "evidence": "缺失来源编号：src-dcdf6407958bd561",
         "knowledge_ids": [
           "K1"
         ],
@@ -15,6 +15,6 @@
       }
     ],
     "mode": "live",
-    "report_path": "<RUN_DIR>/reports/source-preflight-546267bc8e25432ab2ce39cfaa023e50.json"
+    "report_path": "<RUN_DIR>/reports/source-preflight-3312f10b02544d75b6d0525840d91d1b.json"
   }
 }

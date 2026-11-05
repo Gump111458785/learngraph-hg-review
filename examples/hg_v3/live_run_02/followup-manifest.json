@@ -1,0 +1,119 @@
+{
+  "mode": "live",
+  "continued_from_started": 7,
+  "total_logical_calls": 10,
+  "authorized_limit": 10,
+  "results": {
+    "quiz_bad_prompt": {
+      "quiz": {
+        "lesson_id": "L1",
+        "questions": [
+          {
+            "question_id": "Q1",
+            "lesson_id": "L1",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "prompt": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+            "reference_answer": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+            "accepted_keywords": [],
+            "rubric": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。"
+          }
+        ],
+        "mode": "live"
+      },
+      "decision": {
+        "passed": false,
+        "issues": [
+          {
+            "category": "content",
+            "reason": "prompt: 题干与教案文本存在矛盾点。原文强调：列表可变、元组不可变，且讨论的是“容器自身的元素绑定”，题干说“既然列表和元组都不可变，请解释为什么二者都不能直接替换元素”与原文不符，需要改成“为什么二者都不能直接替换元素”改为“为什么列表可以替换元素而元组不能替换元素”，并确保与教案一致。；建议：将题干改为：请解释为什么列表可以替换已有元素（或追加元素）而元组不能直接替换其中元素。确保与 lesson_blocks 表述一致。并在题干中避免暗示二者不可变的误导表述。",
+            "evidence": "question_id=Q1; component=prompt; 字符 0:30; report=quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "queries": []
+          },
+          {
+            "category": "content",
+            "reason": "reference_answer: 参考答案与教案目标不完全对齐。原文与教案强调列表可变、元组不可变，且需讨论“容器自身的元素绑定”并且避免讨论内部对象的修改。参考答案没有明确区分两者的可变性判断及对应下标赋值行为的要点。；建议：参考答案应明确：1) 列表可通过下标赋值直接替换已有元素（可变性）; 2) 元组不允许通过下标赋值替换元素（不可变性）；并声明讨论范围仅限容器自身的元素绑定，不涉及内部可变对象的内容修改。",
+            "evidence": "question_id=Q1; component=reference_answer; 字符 0:67; report=quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "queries": []
+          },
+          {
+            "category": "content",
+            "reason": "rubric: 评分点需要更精确地对应正确结论与题干条件。当前 rubric 指标未明确覆盖“列表可变、元组不可变”的要点，以及“是否涉及追加元素”的要点，需与原教案一致。；建议：在 rubric 中明确两条关键得分点：1) 指出列表可通过下标赋值替换元素（1 分）并可追加元素（2 分中的一部分，若仅写替换则给 1 分，清晰分项）；2) 指出元组不可通过下标赋值替换元素（1 分），并限定讨论为容器自身的元素绑定，不涉及内部对象修改。确保总分为 2 分。",
+            "evidence": "question_id=Q1; component=rubric; 字符 0:93; report=quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "queries": []
+          }
+        ],
+        "mode": "live",
+        "report_path": "<RUN_DIR>/reports/quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json"
+      }
+    },
+    "quiz_bad_reference_answer": {
+      "blocked": true,
+      "validation_error": "练习审核未完整覆盖目标"
+    },
+    "quiz_bad_rubric": {
+      "quiz": {
+        "lesson_id": "L1",
+        "questions": [
+          {
+            "question_id": "Q1",
+            "lesson_id": "L1",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "prompt": "在不创建新容器的情况下，列表与元组中哪一种允许通过下标赋值直接替换已有元素？请根据容器自身的可变性说明理由。",
+            "reference_answer": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+            "accepted_keywords": [],
+            "rubric": "只有回答元组可直接替换元素、列表不可替换才给满分；说列表可变一律零分。"
+          }
+        ],
+        "mode": "live"
+      },
+      "decision": {
+        "passed": false,
+        "issues": [
+          {
+            "category": "content",
+            "reason": "prompt: 题干描述与教案在“容器自身的可变性”以及“不创建新容器”下的替换限制存在潜在歧义，且题干未明确要求只讨论容器自身的元素绑定，容易引导学生误解为必须给出“元组不可替换”为正确答案。；建议：明确指出答案应仅涉及容器自身的元素绑定是否可替换，不讨论内部对象的修改；并给出限定条件，如“不创建新容器、仅讨论容器自身的元素绑定”的结论应以教育目标为导向。",
+            "evidence": "question_id=Q1; component=prompt; 字符 0:54; report=quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "queries": []
+          },
+          {
+            "category": "content",
+            "reason": "reference_answer: 参考答案声称“列表允许...，元组不允许”，与教案和原文一致的结论应是“列表可以，因为可变；元组不可替换，因为不可变”。当前参考答案句式混淆导致易误判为反向结论，需要明确写法且符合教案原文。；建议：将参考答案改为：列表允许通过下标赋值直接替换已有元素，因为列表可变；元组不允许，因为元组不可变。并注明仅讨论容器自身的元素绑定，不讨论内部对象。",
+            "evidence": "question_id=Q1; component=reference_answer; 字符 0:67; report=quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "queries": []
+          },
+          {
+            "category": "content",
+            "reason": "rubric: Rubric当前与题干要求的“只有回答元组可直接替换元素、列表不可替换才给满分”严重冲突，且列出“说列表可变一律零分”是不符合教案原文及学习目标的评分逻辑。应改为细化评分点：是否正确指出可变性、是否正确区分容器自身绑定与内部对象修改，以及是否限定在不创建新容器的前提下。；建议：将评分点修订为：1) 正确指出容器自身的替换能力：列表可替换，元组不可替换；2) 明确说明仅讨论容器自身的元素绑定，不讨论内部对象内容的修改；3) 不创建新容器的前提下是否正确应用结论；4) 解释清晰，避免混淆。",
+            "evidence": "question_id=Q1; component=rubric; 字符 0:35; report=quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json",
+            "knowledge_ids": [
+              "K1"
+            ],
+            "queries": []
+          }
+        ],
+        "mode": "live",
+        "report_path": "<RUN_DIR>/reports/quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json"
+      }
+    }
+  },
+  "human_review": "pending"
+}

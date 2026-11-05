@@ -1,0 +1,13 @@
+{
+  "lesson_id": "L1",
+  "passed": false,
+  "issues": [
+    "[warning/obvious_error] section-1 字符 0:85 问题：原文与引用来源存在一致性，但未明确说明“容器自身的元素绑定”这一表述的教学含义及对初级学习者的可理解性。建议在稿件中增加简短定义与例子来区分“绑定改变”与“对象内容改变”的区别。 建议：在 section-1 增加示例：1) 列表替换、追加；2) 元组不可变性及绑定关系；3) 元组内部可变对象的引用不等于元组元素本身改变。"
+  ],
+  "checked_source_ids": [
+    "src-11b1965c373e3867"
+  ],
+  "mode": "live",
+  "review_status": "needs_review",
+  "report_path": "<RUN_DIR>/reports/g-c9993fcd67f6426192889747dd0a63db.json"
+}

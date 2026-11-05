@@ -1,0 +1,26 @@
+{
+  "responses_with_usage": 24,
+  "input_tokens": 31491,
+  "output_tokens": 17241,
+  "reference_estimate_usd": 0.00847095,
+  "actual_invoice": "not available; estimate is not invoice",
+  "batch_01": {
+    "responses": 11,
+    "authorized": 10,
+    "overrun": 1
+  },
+  "batch_02": {
+    "responses": 10,
+    "authorized": 10,
+    "budget_enforced": true
+  },
+  "human_review": "confirmed_with_disagreements",
+  "recipient_signoffs": "pending",
+  "reviewer": "冯甘雨",
+  "batch_03": {
+    "responses": 3,
+    "authorized": 3,
+    "budget_enforced": true,
+    "all_expected": false
+  }
+}

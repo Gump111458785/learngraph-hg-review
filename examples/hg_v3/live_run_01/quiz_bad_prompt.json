@@ -1,0 +1,53 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+        "reference_answer": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "accepted_keywords": [],
+        "rubric": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "prompt: 题干与课目标存在偏差。原材料指出：‘既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。’与本课程的目标（区分列表和元组的可变性）不一致，且逻辑矛盾（列表是可变的，元组不可变，题干却说都不可变）。应改为要求解释两者的可变性差异，以及为什么不能直接替换元素的原因应与可变性相关，而非错误地声称两者都不可变。；建议：将题干改为“请解释列表和元组在可变性上的差异，并说明为什么不能直接替换已有元素、以及替换属性如何影响容器绑定。”并确保与教案目标一致。",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:30; report=quiz-g-400b144fc43d4bb481bca7913a56f03a.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "reference_answer: 参考答案错误且不完整。原文与教案均强调：列表可变，元组不可变，且提到容器自身的元素绑定。当前参考答案仅区分“列表允许直接替换”而未覆盖元组不可替换及容器绑定等要点，且与提问意图不完全一致。；建议：将参考答案改为：”列表是可变序列，可以直接替换已有元素；元组是不可变序列，创建后不能直接替换已有元素。讨论应聚焦容器绑定，即对容器本身的元素绑定的不可变性要求，与内部可变对象无关。“",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:40; report=quiz-g-400b144fc43d4bb481bca7913a56f03a.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "rubric: 评分要点未覆盖清晰。现有 rubric 指向“指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值”，但未确保评判点与教案、文本一致，且需覆盖对“容器绑定”理解。；建议：将 rubric 调整为：1) 明确得分项：a) 能否正确区分列表与元组的可变性（2 分）b) 能否解释为何不能直接替换元素并涉及容器绑定（2 分）c) 是否提及“讨论的是容器自身的元素绑定，而非内部对象的可变性内容”（1 分）。确保各点与原文一致。",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:60; report=quiz-g-400b144fc43d4bb481bca7913a56f03a.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-400b144fc43d4bb481bca7913a56f03a.json"
+  }
+}

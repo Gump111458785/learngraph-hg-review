@@ -1,0 +1,29 @@
+{
+  "audit_report_path": "<RUN_DIR>/reports/g-8af376bd067d4ef6b482281a45285b5f.json",
+  "diagnosis": {
+    "issues": [
+      {
+        "category": "evidence",
+        "reason": "section-1 字符 0:33 问题：该断言缺乏可验证的测试证据，且与可获得的来源描述不一致，属于重要主张的证据缺失。请提供具体的测试或课程材料来支撑，或将表述改为“在某些条件下可能性存在，需进一步测试确认”。 建议：补充或替换为可证实的语句，如“在某些场景下，使用元组可能带来微幅性能变化，具体要看程序进一步实现”，并在课程材料中附上可核验的测试结果或引用。",
+        "evidence": "audit 中指出该断言缺乏可证实的测试证据，与来源描述不一致，需提供测试或材料支撑。来源仅提到对比与定义，未提供可核验的性能断言的证据。",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": [
+          "请提供可核验的测试结果或引用，支持“在某些场景下，使用元组可能带来微幅性能变化”的断言，或将表述改为更保守的描述。",
+          "若无可核验测试，请改为“在某些场景下可能存在差异，需进一步测试确认”的表述。"
+        ]
+      }
+    ]
+  },
+  "usage": {
+    "model": "gpt-5-nano-2025-08-07",
+    "response_id": "resp_0eeb993c7bf43ad6016aec300f8ce087d09cab5bea786b0647",
+    "input_tokens": 999,
+    "cached_input_tokens": 0,
+    "output_tokens": 314,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00017555,
+    "elapsed_seconds": 3.422
+  }
+}

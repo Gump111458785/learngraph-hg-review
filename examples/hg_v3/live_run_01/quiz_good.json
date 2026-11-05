@@ -1,0 +1,53 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "reference_answer": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "accepted_keywords": [],
+        "rubric": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "prompt: 题干明确询问“哪一种允许直接替换已有元素”，但答案需结合可变性与容器绑定的教案要点。当前题干未明确要求讨论“容器绑定”这一点，且与教案中的“可变序列/不可变序列”以及对容器自身元素绑定的强调存在偏离。需在题干中明确指向课目标并避免隐性偏移。；建议：将题干改为明确包含对“可变性”和“容器自身绑定（引用/赋值）”的区分，例如：‘在不改变结构的前提下，哪一种允许直接替换、哪一种只能通过重新赋值/重新创建实现？并简要解释原因，要求结合容器自身的绑定特性。’",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:27; report=quiz-g-a7340c52dec147ba995ccac9b223ca16.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "reference_answer: 参考答案正确性受教案约束，需独立对照原文与教案并明确通过，当前参考答案简单陈述且未充分覆盖对比两种容器的行为及容器绑定的要点。需在回答中明确：列表可变、元组不可变，并提及“容器绑定”这一点与教案一致。；建议：扩展参考答案，明确阐述：1) 列表可直接替换已有元素；2) 元组不可直接替换元素；3) 讨论关注点为容器自身的元素绑定，不 necesariamente 讨论内部可变对象。",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:40; report=quiz-g-a7340c52dec147ba995ccac9b223ca16.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "rubric: 评分点与教案目标需一致，当前 rubric 将“容器绑定与可变性”分点混合，未明确区分哪些点对应列表/元组的正确性，且缺少对容器绑定的具体要求的表述。；建议：将 rubric 调整为两部分：1) 指出列表可直接替换元素（1/2分或等值权重）并简要解释可变性；2) 指出元组不可直接替换元素（剩余分值），并强调容器自身的元素绑定与内部对象无关。确保不要求讨论内部可变对象。",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:60; report=quiz-g-a7340c52dec147ba995ccac9b223ca16.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-a7340c52dec147ba995ccac9b223ca16.json"
+  }
+}

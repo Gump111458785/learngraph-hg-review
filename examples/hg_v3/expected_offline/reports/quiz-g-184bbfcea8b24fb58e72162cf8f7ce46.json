@@ -1,0 +1,159 @@
+{
+  "review_id": "quiz-g-184bbfcea8b24fb58e72162cf8f7ce46",
+  "created_at": "2026-11-05T07:32:40.470161+00:00",
+  "lesson_id": "L1",
+  "question_id": "Q1",
+  "quiz_hash": "880cb3a4a176d1843e26b9c97199a60ad44ebfcf38b7c139a0cc1cbdaaf9c5e0",
+  "lesson_hash": "016e76b22c75242fb0a9ae925b196b1737131ea4ae7d7fd8b51bf8ec0d77f12b",
+  "sources_hash": "8da5041771ae8d9bfbf58d1dcadc74621af4bdcfba89f825df18038f54423147",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "status": "revise",
+  "summary": "离线预置的分项审核",
+  "checks": [
+    {
+      "component": "prompt",
+      "status": "revise",
+      "reason": "与可变性原文矛盾",
+      "suggestion": "按原文修正",
+      "target": {
+        "block_id": "prompt",
+        "quote": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0
+      },
+      "source_id": null,
+      "source_anchor": null,
+      "location": {
+        "document_id": "Q1",
+        "block_id": "prompt",
+        "quote": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 30,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 85,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": null
+    },
+    {
+      "component": "reference_answer",
+      "status": "pass",
+      "reason": "与教案依据一致",
+      "suggestion": "保留",
+      "target": {
+        "block_id": "reference_answer",
+        "quote": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0
+      },
+      "source_id": null,
+      "source_anchor": null,
+      "location": {
+        "document_id": "Q1",
+        "block_id": "reference_answer",
+        "quote": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 67,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 85,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": null
+    },
+    {
+      "component": "rubric",
+      "status": "pass",
+      "reason": "与教案依据一致",
+      "suggestion": "保留",
+      "target": {
+        "block_id": "rubric",
+        "quote": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0
+      },
+      "source_id": null,
+      "source_anchor": null,
+      "location": {
+        "document_id": "Q1",
+        "block_id": "rubric",
+        "quote": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 93,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 85,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": null
+    }
+  ],
+  "usage": {
+    "model": "scripted-offline-fixture",
+    "response_id": "fixture",
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": null,
+    "elapsed_seconds": 0.0
+  }
+}

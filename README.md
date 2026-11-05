@@ -2,13 +2,13 @@
 
 负责的课程合作项目 **任务 2**：H 上传资料相关性与可采纳性审查、G 教学内容与来源核查，以及文件解析、引用定位和修订记录。
 
-这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.3.0**，在 0.2.0 基础上对齐团队 V3（2026-11-05，`97e04ca`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
+这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.3.1**，在 0.2.0 基础上对齐团队 V3（2026-11-05，`97e04ca`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
 
 ## V3 补充交付
 
-新增独立的练习分项审核：题干、参考答案、评分规则必须分别有结论和可定位依据。团队适配保留 `run_g_live(..., sources=当前会话原文)`，不再让 V3 回退到进程级 registry。独立仓库 SDK 3.37.0 下 **84 项测试通过**；团队新增 20 项专项测试，全量 **255 项通过**。
+新增独立的练习分项审核：题干、参考答案、评分规则必须分别有结论和可定位依据。团队适配保留 `run_g_live(..., sources=当前会话原文)`，不再让 V3 回退到进程级 registry。独立仓库 SDK 3.37.0 下 **85 项测试通过**；团队新增 26 项专项测试，全量 **261 项通过**。
 
-[验收与交接说明](docs/HG_V3_ACCEPTANCE.md) 包含输入、输出、复现命令和失败案例；[成员签收表](docs/HG_V3_SIGNOFF.md) 保持待实际接收方确认；[个人汇报模块页](docs/hg-v3/冯甘雨-HG-V3-离线验收汇报.pptx) 可供组长合并。`examples/hg_v3/expected_offline/` 是明确标识的预置记录，不是模型实测。团队脚本参考在 `integration/learngraph/tools/validate_hg.py`，应放到团队 `tools/` 运行。真实 API 外发与费用等待用户明确授权；没有虚构人工签收。
+[验收与交接说明](docs/HG_V3_ACCEPTANCE.md) 包含输入、输出、复现命令和失败案例；[成员签收表](docs/HG_V3_SIGNOFF.md) 保持待实际接收方确认；[个人汇报模块页](docs/hg-v3/冯甘雨-HG-V3-验收汇报.pptx) 可供组长合并。`examples/hg_v3/expected_offline/` 是明确标识的预置记录，不是模型实测。团队脚本参考在 `integration/learngraph/tools/validate_hg.py`，应放到团队 `tools/` 运行。已有三批真实调用与首两批本人复核意见，保留误拒和协议失配，其他成员仍待签收。
 
 ## 做了什么
 

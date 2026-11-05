@@ -1,0 +1,38 @@
+{
+  "draft": {
+    "lesson_id": "L1",
+    "title": "Python 列表与元组",
+    "objective": "能区分列表和元组的可变性",
+    "knowledge_ids": [
+      "K1"
+    ],
+    "sections": [
+      {
+        "heading": "可变性",
+        "body": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "source_ids": [
+          "src-8c6b44b14054203b"
+        ]
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "原文强调“讨论的是容器自身的元素绑定，不是元组内部可变对象的内容”但稿件 section-1 未完整表达元组内部可变对象对不可变性的影响，容易造成误解，需补充区分“容器自身的绑定”与“内部对象的可变性”两层含义。",
+        "evidence": "audit 提示指出需在 section-1 补充关于元组内部可变对象的内容不影响元组不可变性的说明，并明确区分容器自身的绑定与内部对象的可变性。原文段落仅提到“容器自身的元素绑定，不是元组内部可变对象的内容”，未覆盖全面说明。",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": [
+          "在 section-1 增加说明：1) 元组的不可变性指的是元组对象本身的绑定关系不可变；2) 如果元组内部元素引用的对象是可变的，这些对象的内容可变并不改变元组的不可变性。"
+        ]
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/diagnosis-8d7405dbd1764f11952affc98cd0ce5d.json"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "mode": "live",
+  "cases": {
+    "h_partial": {
+      "actual": "partial",
+      "expected": "partial",
+      "accepted_block_ids": [
+        "b0001"
+      ],
+      "warnings": []
+    },
+    "lesson_bad": {
+      "passed": false,
+      "categories": [
+        "uncertain"
+      ],
+      "report_path": "<RUN_DIR>/reports/g-6c93da10e39445a18f7604f00e4df0c2.json"
+    },
+    "lesson_good": {
+      "passed": false,
+      "categories": [
+        "evidence",
+        "graph",
+        "plan",
+        "content"
+      ],
+      "report_path": "<RUN_DIR>/reports/diagnosis-7d7d049e5ba24a43ae364b1d587bdae5.json"
+    },
+    "uncertain": {
+      "passed": false,
+      "categories": [
+        "uncertain"
+      ],
+      "report_path": "<RUN_DIR>/reports/diagnosis-b65fbbc1e4b24f879a35175cd3715574.json"
+    }
+  },
+  "human_review": "pending",
+  "signoffs": {},
+  "model_h": "gpt-5-nano",
+  "model_g": "gpt-5-nano",
+  "error_type": "ReviewError",
+  "all_expected": false,
+  "logical_calls_started": 7,
+  "logical_call_limit": 10,
+  "scripted_model_responses": false
+}

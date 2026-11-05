@@ -1,5 +1,6 @@
 """Quiz review calls the real service/adapter with synthetic model responses."""
 
+import json
 from copy import deepcopy
 
 import pytest
@@ -101,3 +102,26 @@ def test_uncertain_component_requires_manual_review():
         sources,
     )
     assert report.status == "needs_review"
+
+
+def test_official_sdk_transports_the_bound_quiz_schema_without_network():
+    import httpx
+    from test_gateway import make_gateway, response_body
+
+    context, quiz, lesson, sources = inputs()
+    body = response_body()
+    body["output"][0]["content"][0]["text"] = json.dumps(response(quiz, lesson))
+    sent = []
+
+    def handler(request):
+        sent.append(json.loads(request.content))
+        return httpx.Response(200, json=body)
+
+    report = review_quiz(ReviewService(make_gateway(handler)), context, quiz, lesson, sources)
+    assert report.status == "pass"
+    schema = sent[0]["text"]["format"]["schema"]
+    assert schema["properties"]["checked_objectives"]["items"]["const"] == context.objectives[0]
+    assert len(schema["properties"]["checks"]["items"]["anyOf"]) == 3
+    encoded = json.dumps(schema)
+    assert '"const": "prompt"' in encoded and '"const": "reference_answer"' in encoded
+    assert '"const": "s"' in encoded

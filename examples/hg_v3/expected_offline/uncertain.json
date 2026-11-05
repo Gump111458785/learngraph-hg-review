@@ -9,9 +9,9 @@
     "sections": [
       {
         "heading": "可变性",
-        "body": "没有任何测试或额外资料也能保证所有程序使用元组后运行速度提高十倍。",
+        "body": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
         "source_ids": [
-          "src-d82020724cce17c9"
+          "src-dcdf6407958bd561"
         ]
       }
     ],
@@ -22,13 +22,15 @@
     "issues": [
       {
         "category": "uncertain",
-        "reason": "G 要求人工复核",
-        "evidence": "[warning/missing_evidence] section-1 字符 0:33 问题：原文不支持十倍性能保证 建议：补性能实验",
-        "knowledge_ids": [],
+        "reason": "缺少具体质疑段落与新证据，不能确定原因",
+        "evidence": "原文列表可变、元组不可变",
+        "knowledge_ids": [
+          "K1"
+        ],
         "queries": []
       }
     ],
     "mode": "live",
-    "report_path": "<RUN_DIR>/reports/g-14fa0c7dbebc46968dc2b687e7fcbed7.json"
+    "report_path": "<RUN_DIR>/reports/diagnosis-ab2dc47457804fdba2106252ab6beb30.json"
   }
 }

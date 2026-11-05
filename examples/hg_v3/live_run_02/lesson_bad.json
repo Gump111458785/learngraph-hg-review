@@ -1,0 +1,34 @@
+{
+  "draft": {
+    "lesson_id": "L1",
+    "title": "Python 列表与元组",
+    "objective": "能区分列表和元组的可变性",
+    "knowledge_ids": [
+      "K1"
+    ],
+    "sections": [
+      {
+        "heading": "可变性",
+        "body": "列表是不可变序列，不能替换已有元素；元组是可变序列，可以直接替换其中元素。",
+        "source_ids": [
+          "src-11b1965c373e3867"
+        ]
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "uncertain",
+        "reason": "G 要求人工复核",
+        "evidence": "[warning/goal_mismatch] section-1 字符 0:37 问题：本节文本的主张与引用来源的原文不一致。原文明确指出：Python 列表是可变序列，可以替换已有元素，也可以追加元素；Python 元组是不可变序列，创建后不能直接替换元组中的元素。应将本节文本改为：列表是可变序列，可以替换已有元素，也可以追加元素；元组是不可变序列，创建后不能直接替换元组中的元素。 建议：将主张改为与来源一致，逐字对齐引用中的区分。确保“列表可变、元组不可变”的描述在稿件中显式且与来源一致；如需强调“容器内部可变对象的内容”，请另行说明与本节主张无关。",
+        "knowledge_ids": [],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/g-6c93da10e39445a18f7604f00e4df0c2.json"
+  }
+}

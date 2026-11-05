@@ -11,7 +11,7 @@
         "heading": "可变性",
         "body": "列表是不可变序列，不能替换已有元素；元组是可变序列，可以直接替换其中元素。",
         "source_ids": [
-          "src-d82020724cce17c9"
+          "src-dcdf6407958bd561"
         ]
       }
     ],
@@ -31,6 +31,6 @@
       }
     ],
     "mode": "live",
-    "report_path": "<RUN_DIR>/reports/diagnosis-0a6b537096954191a72c33e24cc5e69a.json"
+    "report_path": "<RUN_DIR>/reports/diagnosis-67469be73d444565a8439c950dab4287.json"
   }
 }

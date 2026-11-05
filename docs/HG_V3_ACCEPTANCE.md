@@ -57,28 +57,15 @@ python -m pytest -q
 真实运行命令如下，会使用本机 Key 并产生少量付费调用：
 
 ```bash
-python -m tools.validate_hg --mode live --out outputs/hg-acceptance-live-new
+python -m tools.validate_hg --mode live --max-calls 10 --out outputs/hg-acceptance-live-new
 ```
 
 输入限定为自编、可共享的 Python 基础教学样例，不上传个人文件。完整运行通常包含 1 次 H、3 次 G 教案、最多 2 次失败诊断和 4 次练习审核；单次输出最多由 `OPENAI_MAX_OUTPUT_TOKENS` 限定（默认 6000），SDK 保留最多一次传输重试。不能将估算当成账单。原文缺失例在发出请求前阻止，不产生该例的模型调用。
 
-2026-11-05：真实调用被自动审批拒绝，原因是此前约定暂缓付费联调；需要用户针对本批样例外发及费用明确授权后才能执行。当前没有新真实审核结果，不填写虚构的模型响应或人工签名。
+2026-11-05：在用户明确授权后完成三批真实调用，分别为 11、10、3 次。第一批超过原授权 1 次，原因和修复如实记录；后两批由调用前硬上限和续跑账本约束，未超限。4 项上限/失败消耗测试与 1 项续跑测试验证达到额度后不再发请求。CLI 串行使用同一账本；不要并发复用账本。真实验收并非全通过，保留正常稿过度返修和模型协议失配；详见 [真实审核对照](HG_V3_LIVE_REVIEW.md)。冯甘雨已确认首两批人工同意/质疑意见，其他成员仍待签收。
 
 人工复核者用同一输出目录填写 `docs/HG_V3_SIGNOFF.md`；应写姓名、版本、样例 ID、打开的引用位置、同意/质疑理由和实际运行结论。机器和 AI 辅助检查均不能代签。
 
 ## 课堂汇报
 
-个人模块页覆盖 H 混合资料、G 错误稿→修订稿、练习三组件失败、返修路由和验收边界；当前标明“离线预置案例”。[六页可编辑汇报文件](hg-v3/冯甘雨-HG-V3-离线验收汇报.pptx) 已逐页渲染检查。真实审核获准完成后，补充真实输入输出截图、模型与耗时，更新最后一页的验收状态。
-
-## 独立包调用练习审核
-
-独立包不需要团队 core 即可导入 `QuizDraft` 和 `review_quiz`。输入为内部 Context、QuizDraft、教案 TextBlock 数组和来源 Material 数组：
-
-```python
-from learngraph_review import ReviewService
-from learngraph_review.quiz import QuizDraft, review_quiz
-# context、lesson_blocks、sources 均是内部丰富模型；不要直接传团队公共 LessonDraft。
-report = review_quiz(ReviewService(), context, quiz, lesson_blocks, sources)
-```
-
-上述 ReviewService 默认真实调用 API。独立离线测试使用明确注入的 FixtureGateway；运行 `python -m pytest -q` 不需要密钥。完整团队脚本请把 `integration/learngraph/tools/validate_hg.py` 放入团队 tools 后，在团队根目录运行；它依赖 V3 公共合同和服务。
+个人模块页覆盖 H 混合资料、G 错误稿→修订稿、练习三组件失败、返修路由和验收边界；案例页标明离线预置，另附真实调用与人工复核结果页。[可编辑汇报文件](hg-v3/冯甘雨-HG-V3-验收汇报.pptx) 已逐页渲染检查，并附真实调用结果及人工复核意见；接收方签收和教学质量问题仍保留待完成。

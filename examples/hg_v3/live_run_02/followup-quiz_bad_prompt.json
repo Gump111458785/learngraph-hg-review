@@ -1,0 +1,53 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+        "reference_answer": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+        "accepted_keywords": [],
+        "rubric": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "prompt: 题干与教案文本存在矛盾点。原文强调：列表可变、元组不可变，且讨论的是“容器自身的元素绑定”，题干说“既然列表和元组都不可变，请解释为什么二者都不能直接替换元素”与原文不符，需要改成“为什么二者都不能直接替换元素”改为“为什么列表可以替换元素而元组不能替换元素”，并确保与教案一致。；建议：将题干改为：请解释为什么列表可以替换已有元素（或追加元素）而元组不能直接替换其中元素。确保与 lesson_blocks 表述一致。并在题干中避免暗示二者不可变的误导表述。",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:30; report=quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "reference_answer: 参考答案与教案目标不完全对齐。原文与教案强调列表可变、元组不可变，且需讨论“容器自身的元素绑定”并且避免讨论内部对象的修改。参考答案没有明确区分两者的可变性判断及对应下标赋值行为的要点。；建议：参考答案应明确：1) 列表可通过下标赋值直接替换已有元素（可变性）; 2) 元组不允许通过下标赋值替换元素（不可变性）；并声明讨论范围仅限容器自身的元素绑定，不涉及内部可变对象的内容修改。",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:67; report=quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "rubric: 评分点需要更精确地对应正确结论与题干条件。当前 rubric 指标未明确覆盖“列表可变、元组不可变”的要点，以及“是否涉及追加元素”的要点，需与原教案一致。；建议：在 rubric 中明确两条关键得分点：1) 指出列表可通过下标赋值替换元素（1 分）并可追加元素（2 分中的一部分，若仅写替换则给 1 分，清晰分项）；2) 指出元组不可通过下标赋值替换元素（1 分），并限定讨论为容器自身的元素绑定，不涉及内部对象修改。确保总分为 2 分。",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:93; report=quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-ee19a6bda78f4adc85b877d2926c27d1.json"
+  }
+}

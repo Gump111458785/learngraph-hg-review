@@ -1,0 +1,53 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "reference_answer": "元组允许直接替换已有元素，列表不允许，因为元组可变而列表不可变。",
+        "accepted_keywords": [],
+        "rubric": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "prompt: 题干问法存在模糊与错误引导：原文的正确结论应是“列表允许直接替换已有元素，元组不允许”；当前 prompt 与 reference_answer 之间存在一致性问题，且未充分体现对教学目标的对照，需改写为明确、可回答的问题，避免引导性错误。；建议：将题干改为：在 Python 中，列表和元组中哪一种允许直接修改或替换已有元素？请解释理由，并结合可变性概念给出答案。请确保答案与教案中的表述一致。",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:27; report=quiz-g-81d16a26e7a842159ba772524375158c.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "reference_answer: 参考答案错误：应为“元组不可变，不能直接替换元素；列表可变，可以替换元素。”需要对照教案和原文进行纠正。；建议：将 reference_answer 修改为：\"列表允许直接替换已有元素；元组不可变，创建后不能直接替换其中元素。\" 同时解释区分容器绑定与内部对象可变性。",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:32; report=quiz-g-81d16a26e7a842159ba772524375158c.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "rubric: 评分点与正确答案不完全一致，需明确覆盖：1) 列表可替换元素；2) 元组不可替换；3) 区分容器绑定与内部对象可变性。；建议：将 rubric 调整为：- 指出列表允许直接替换已有元素，得分 0.5；- 指出元组不可直接替换元素，得分 0.5；- 说明容器绑定与内部对象可变性之间的区别，作为额外要点，若包含则再给分。",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:60; report=quiz-g-81d16a26e7a842159ba772524375158c.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-81d16a26e7a842159ba772524375158c.json"
+  }
+}

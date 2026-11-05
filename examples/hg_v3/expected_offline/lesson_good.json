@@ -9,9 +9,9 @@
     "sections": [
       {
         "heading": "可变性",
-        "body": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "body": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
         "source_ids": [
-          "src-d82020724cce17c9"
+          "src-dcdf6407958bd561"
         ]
       }
     ],
@@ -21,6 +21,6 @@
     "passed": true,
     "issues": [],
     "mode": "live",
-    "report_path": "<RUN_DIR>/reports/g-18cf20fb74c647cb8fad7b56cb735a02.json"
+    "report_path": "<RUN_DIR>/reports/g-a5858f67659b4b0caecf308a36177936.json"
   }
 }

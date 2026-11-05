@@ -1,0 +1,23 @@
+{
+  "status": "confirmed_with_disagreements",
+  "reviewer": "冯甘雨",
+  "date": "2026-11-05",
+  "confirmation_source": "用户在本对话明确回复：已查看，确认上述复核意见。",
+  "scope": [
+    "H 广告排除与知识段采纳",
+    "列表可变、元组不可变",
+    "拦截颠倒可变性的教案与答案",
+    "质疑正常稿的过度返修",
+    "无具体依据的质疑转人工"
+  ],
+  "agreed": [
+    "广告段不进入证据",
+    "错误的可变性结论不能交付",
+    "原因无法确定应人工复核"
+  ],
+  "disputed": [
+    "正常教案与练习被过度返修，不能把教学扩展或措辞偏好当成事实错误"
+  ],
+  "evidence_guide": "docs/HG_V3_LIVE_REVIEW.md",
+  "recipient_signoffs": "not included; pending members 1/3/6"
+}

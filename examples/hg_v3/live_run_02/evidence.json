@@ -1,0 +1,11 @@
+[
+  {
+    "source_id": "src-11b1965c373e3867",
+    "title": "mixed-material.docx",
+    "locator": "mixed-material.docx",
+    "claim": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+    "knowledge_id": "K1",
+    "source_type": "fixture",
+    "mode": "live"
+  }
+]

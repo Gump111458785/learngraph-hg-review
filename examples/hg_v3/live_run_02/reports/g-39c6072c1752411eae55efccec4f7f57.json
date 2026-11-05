@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "review_id": "g-39c6072c1752411eae55efccec4f7f57",
+  "created_at": "2026-11-05T07:35:02.755340+00:00",
+  "unit_id": "L1",
+  "revision": 1,
+  "draft_hash": "5f495d32ac818435c58b198d9453740b9354b23f89ad0cb62863255de845c5c4",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "sources_hash": "11e426e4f04216eb854b30c216105c87b4d2121ba1f6ec2bd1d0082a5b51e580",
+  "status": "revise",
+  "next_agent": "D",
+  "summary": "对 D 的单节内容稿及可用媒体文本进行核查，聚焦来源支持、课程目标一致性与潜在错误。逐条核对引用，检查未被引用覆盖的重要主张与媒体一致性。给出发现的 issue、并列出本次检查涉及的全部 objective。",
+  "findings": [
+    {
+      "id": "issue-b4585923b5b08f3f9ef3",
+      "origin": "model",
+      "category": "obvious_error",
+      "severity": "error",
+      "target": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 85,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence": {
+        "document_id": "src-11b1965c373e3867",
+        "block_id": "reference",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "message": "原文主张与核查材料存在不一致：引用文本与来源材料在“元组内部若引用可变对象，改变该对象内容不等于替换元组元素”的表述可能触及容器绑定与对象引用的区分，需精确定义“容器自身的元素绑定”与“可变对象内容变动”的关系。建议最终版本明确区分：1) 元组不可变性指的是元组本身的元素引用不可替换；2) 仅当元组内元素为可变对象时，对该对象的修改并不改变元组对该位置引用的绑定。当前表述需要和来源文本逐字对齐，同时在教材中给出明确的示例与边界条件以避免混淆。",
+      "suggestion": "请对 section-1 的句式进行微调，确保与来源文献完全一致的表达是：‘列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。’如需保留“内部若引用可变对象，改变该对象内容不等于替换元组元素”的教学点，应在后续段落专门解释并以示例区分“修改对象内容”与“替换绑定”三者的区别，避免歧义。"
+    }
+  ],
+  "citation_checks": [
+    {
+      "section_id": "section-1",
+      "citation_index": 0,
+      "valid": true,
+      "claim": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 85,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence": {
+        "document_id": "src-11b1965c373e3867",
+        "block_id": "reference",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "error": null
+    }
+  ],
+  "checked_objectives": [
+    "能区分列表和元组的可变性"
+  ],
+  "media_scope": "本次未提供媒体文本，未执行媒体一致性核查。",
+  "usage": {
+    "model": "gpt-5-nano-2025-08-07",
+    "response_id": "resp_00cc1a531aa02278016aec31a2bd3887d09579ec32ea8878f5",
+    "input_tokens": 1765,
+    "cached_input_tokens": 0,
+    "output_tokens": 609,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.00033185,
+    "elapsed_seconds": 4.701
+  },
+  "revision_record": null
+}

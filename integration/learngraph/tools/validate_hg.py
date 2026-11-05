@@ -27,9 +27,63 @@ from docx import Document
 from dotenv import load_dotenv
 
 from learngraph_review import ReviewService
+from learngraph_review.errors import ReviewError
 from learngraph_review.models import Usage
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class CallBudgetGateway:
+    """Enforce the authorized logical-call limit before contacting any model."""
+
+    def __init__(self, inner, limit, ledger):
+        if limit < 1:
+            raise ValueError("模型调用上限必须为正数")
+        self.inner, self.limit, self.ledger = inner, limit, ledger
+        self.started = 0
+        self.case = ""
+        self.calls = []
+        if ledger.exists():
+            saved = json.loads(ledger.read_text(encoding="utf-8"))
+            if (
+                saved["limit"] != limit
+                or saved["started"] != len(saved["calls"])
+                or not 0 <= saved["started"] <= limit
+            ):
+                raise ValueError("已有调用账本与授权上限不一致，不允许重置额度")
+            self.started, self.calls = saved["started"], saved["calls"]
+
+    def run(self, **kwargs):
+        if self.started >= self.limit:
+            raise ReviewError("已达到授权逻辑调用上限，未发送新的模型请求")
+        self.started += 1
+        record = {"number": self.started, "case": self.case, "status": "started"}
+        self.calls.append(record)
+        self._write()
+        try:
+            result, usage = self.inner.run(**kwargs)
+            record.update(
+                status="completed",
+                usage=usage.model_dump(mode="json"),
+                output=result.model_dump(mode="json"),
+            )
+            return result, usage
+        except Exception as exc:
+            record.update(status="failed", error_type=type(exc).__name__)
+            raise
+        finally:
+            self._write()
+
+    def _write(self):
+        self.ledger.write_text(
+            json.dumps(
+                {"limit": self.limit, "started": self.started, "calls": self.calls},
+                ensure_ascii=False,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
 
 class OfflineGateway:
@@ -84,8 +138,10 @@ class OfflineGateway:
             raw = dict(
                 issues=[
                     dict(
-                        category="content",
-                        reason="正文颠倒列表与元组的可变性",
+                        category="uncertain" if self.case == "uncertain" else "content",
+                        reason="缺少具体质疑段落与新证据，不能确定原因"
+                        if self.case == "uncertain"
+                        else "正文颠倒列表与元组的可变性",
                         evidence="原文列表可变、元组不可变",
                         knowledge_ids=["K1"],
                         queries=[],
@@ -94,7 +150,7 @@ class OfflineGateway:
             )
         else:
             issues = []
-            if self.case != "lesson_good":
+            if self.case not in {"lesson_good", "uncertain"}:
                 text = payload["lesson"]["sections"][0]
                 source = payload["sources"][0]
                 uncertain = self.case == "uncertain"
@@ -132,7 +188,7 @@ class OfflineGateway:
         )
 
 
-def run(out: Path, mode: str):
+def run(out: Path, mode: str, max_calls: int = 10):
     from unittest.mock import patch
 
     from agents.learning_services import audit_content, audit_practice
@@ -150,6 +206,8 @@ def run(out: Path, mode: str):
     os.environ["HG_REVIEW_OUTPUT_DIR"] = str(out / "reports")
     gateway = OfflineGateway() if mode == "offline" else None
     service = ReviewService(gateway=gateway) if gateway else ReviewService()
+    budget = CallBudgetGateway(service.gateway, max_calls, out / "call-ledger.json")
+    service.gateway = budget
     manifest = {
         "mode": mode,
         "cases": {},
@@ -165,6 +223,7 @@ def run(out: Path, mode: str):
         )
 
     def case(name):
+        budget.case = name
         if gateway:
             gateway.case = name
 
@@ -233,12 +292,21 @@ def run(out: Path, mode: str):
                     objective=data["objective"],
                     knowledge_ids=["K1"],
                     sections=[
-                        LessonSection(heading="可变性", body=data[key], source_ids=[source.id])
+                        LessonSection(
+                            heading="可变性",
+                            body=(data["good_lesson"] if name == "uncertain" else data[key]),
+                            source_ids=[source.id],
+                        )
                     ],
                     mode="live",
                 )
                 drafts[name] = draft
-                decision = audit_content(draft, evidence, sources, graph, plan)
+                concern = (
+                    "我觉得本节可能有问题，但没有具体段落或新的证据，请确认能否归因。"
+                    if name == "uncertain"
+                    else ""
+                )
+                decision = audit_content(draft, evidence, sources, graph, plan, concern)
                 save(
                     name,
                     {
@@ -317,9 +385,13 @@ def run(out: Path, mode: str):
     except Exception as exc:
         # Do not expose response bodies, credentials, or transport exception messages.
         manifest["error_type"] = type(exc).__name__
+        if isinstance(exc, ReviewError):
+            manifest["review_error"] = str(exc)
         manifest["all_expected"] = False
         print("验收未完成：" + type(exc).__name__ + "；配置/网络异常详情未写入公开记录。")
     finally:
+        manifest["logical_calls_started"] = budget.started
+        manifest["logical_call_limit"] = budget.limit
         manifest["scripted_model_responses"] = mode == "offline"
         save("manifest", manifest)
     print(f"{mode}: all_expected={manifest['all_expected']}; records={out}")
@@ -330,15 +402,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=["offline", "live"], default="offline")
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--max-calls", type=int, default=10, help="授权的逻辑调用硬上限，发请求前检查"
+    )
     args = parser.parse_args()
     if args.out.exists():
         parser.error("输出已存在，请使用新目录")
+    if args.max_calls < 1:
+        parser.error("max-calls 必须大于零")
     if args.mode == "live":
         load_dotenv(ROOT / ".env")
     else:
         os.environ["PYTHON_DOTENV_DISABLED"] = "1"
         os.environ.pop("OPENAI_API_KEY", None)
-    return run(args.out.resolve(), args.mode)
+    return run(args.out.resolve(), args.mode, args.max_calls)
 
 
 if __name__ == "__main__":

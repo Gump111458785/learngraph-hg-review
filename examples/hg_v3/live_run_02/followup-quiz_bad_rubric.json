@@ -1,0 +1,53 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "在不创建新容器的情况下，列表与元组中哪一种允许通过下标赋值直接替换已有元素？请根据容器自身的可变性说明理由。",
+        "reference_answer": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+        "accepted_keywords": [],
+        "rubric": "只有回答元组可直接替换元素、列表不可替换才给满分；说列表可变一律零分。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "prompt: 题干描述与教案在“容器自身的可变性”以及“不创建新容器”下的替换限制存在潜在歧义，且题干未明确要求只讨论容器自身的元素绑定，容易引导学生误解为必须给出“元组不可替换”为正确答案。；建议：明确指出答案应仅涉及容器自身的元素绑定是否可替换，不讨论内部对象的修改；并给出限定条件，如“不创建新容器、仅讨论容器自身的元素绑定”的结论应以教育目标为导向。",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:54; report=quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "reference_answer: 参考答案声称“列表允许...，元组不允许”，与教案和原文一致的结论应是“列表可以，因为可变；元组不可替换，因为不可变”。当前参考答案句式混淆导致易误判为反向结论，需要明确写法且符合教案原文。；建议：将参考答案改为：列表允许通过下标赋值直接替换已有元素，因为列表可变；元组不允许，因为元组不可变。并注明仅讨论容器自身的元素绑定，不讨论内部对象。",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:67; report=quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      },
+      {
+        "category": "content",
+        "reason": "rubric: Rubric当前与题干要求的“只有回答元组可直接替换元素、列表不可替换才给满分”严重冲突，且列出“说列表可变一律零分”是不符合教案原文及学习目标的评分逻辑。应改为细化评分点：是否正确指出可变性、是否正确区分容器自身绑定与内部对象修改，以及是否限定在不创建新容器的前提下。；建议：将评分点修订为：1) 正确指出容器自身的替换能力：列表可替换，元组不可替换；2) 明确说明仅讨论容器自身的元素绑定，不讨论内部对象内容的修改；3) 不创建新容器的前提下是否正确应用结论；4) 解释清晰，避免混淆。",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:35; report=quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-a4bc5c6099ea4622be6de75cb09756b4.json"
+  }
+}

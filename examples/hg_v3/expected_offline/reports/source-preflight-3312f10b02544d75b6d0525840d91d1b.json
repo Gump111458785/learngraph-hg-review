@@ -1,0 +1,17 @@
+{
+  "stage": "source_preflight",
+  "model_calls": 0,
+  "issues": [
+    {
+      "category": "evidence",
+      "reason": "当前教案缺少可核对的会话原文",
+      "evidence": "缺失来源编号：src-dcdf6407958bd561",
+      "knowledge_ids": [
+        "K1"
+      ],
+      "queries": [
+        "Python 列表与元组 能区分列表和元组的可变性 原始资料"
+      ]
+    }
+  ]
+}

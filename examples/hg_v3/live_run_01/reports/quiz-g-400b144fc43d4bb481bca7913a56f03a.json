@@ -1,0 +1,207 @@
+{
+  "review_id": "quiz-g-400b144fc43d4bb481bca7913a56f03a",
+  "created_at": "2026-11-05T07:28:35.235747+00:00",
+  "lesson_id": "L1",
+  "question_id": "Q1",
+  "quiz_hash": "398934196d4dbdeffd559d1272e4107948f066186e409ed5f891e11efcb43b5a",
+  "lesson_hash": "fe63042fcb08803e48b21ff17792f6220fdb8d0ee024c20d3d62cd2963e8743d",
+  "sources_hash": "fdb9760eefbbc79a6b2843c4320fb83611ff00fb59bb795b3cf0fdf4ceae69b8",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "status": "revise",
+  "summary": "需要人工复核的练习，未通过自动通过。各组件均需提供依据、定位文本与来源锚点。",
+  "checks": [
+    {
+      "component": "prompt",
+      "status": "revise",
+      "reason": "题干与课目标存在偏差。原材料指出：‘既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。’与本课程的目标（区分列表和元组的可变性）不一致，且逻辑矛盾（列表是可变的，元组不可变，题干却说都不可变）。应改为要求解释两者的可变性差异，以及为什么不能直接替换元素的原因应与可变性相关，而非错误地声称两者都不可变。",
+      "suggestion": "将题干改为“请解释列表和元组在可变性上的差异，并说明为什么不能直接替换已有元素、以及替换属性如何影响容器绑定。”并确保与教案目标一致。",
+      "target": {
+        "block_id": "prompt",
+        "quote": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": "src-8c6b44b14054203b",
+      "source_anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0
+      },
+      "location": {
+        "document_id": "Q1",
+        "block_id": "prompt",
+        "quote": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 30,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    },
+    {
+      "component": "reference_answer",
+      "status": "revise",
+      "reason": "参考答案错误且不完整。原文与教案均强调：列表可变，元组不可变，且提到容器自身的元素绑定。当前参考答案仅区分“列表允许直接替换”而未覆盖元组不可替换及容器绑定等要点，且与提问意图不完全一致。",
+      "suggestion": "将参考答案改为：”列表是可变序列，可以直接替换已有元素；元组是不可变序列，创建后不能直接替换已有元素。讨论应聚焦容器绑定，即对容器本身的元素绑定的不可变性要求，与内部可变对象无关。“",
+      "target": {
+        "block_id": "reference_answer",
+        "quote": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": "src-8c6b44b14054203b",
+      "source_anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0
+      },
+      "location": {
+        "document_id": "Q1",
+        "block_id": "reference_answer",
+        "quote": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 40,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    },
+    {
+      "component": "rubric",
+      "status": "revise",
+      "reason": "评分要点未覆盖清晰。现有 rubric 指向“指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值”，但未确保评判点与教案、文本一致，且需覆盖对“容器绑定”理解。",
+      "suggestion": "将 rubric 调整为：1) 明确得分项：a) 能否正确区分列表与元组的可变性（2 分）b) 能否解释为何不能直接替换元素并涉及容器绑定（2 分）c) 是否提及“讨论的是容器自身的元素绑定，而非内部对象的可变性内容”（1 分）。确保各点与原文一致。",
+      "target": {
+        "block_id": "rubric",
+        "quote": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": "src-8c6b44b14054203b",
+      "source_anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0
+      },
+      "location": {
+        "document_id": "Q1",
+        "block_id": "rubric",
+        "quote": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 60,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": {
+        "document_id": "src-8c6b44b14054203b",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 92,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    }
+  ],
+  "usage": {
+    "model": "gpt-5-nano-2025-08-07",
+    "response_id": "resp_00e9344343179965016aec301afa3c87d080c24c8fdda2274d",
+    "input_tokens": 1188,
+    "cached_input_tokens": 0,
+    "output_tokens": 1160,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": 0.0005234,
+    "elapsed_seconds": 8.751
+  }
+}

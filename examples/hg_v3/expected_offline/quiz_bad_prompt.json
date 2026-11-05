@@ -9,9 +9,9 @@
           "K1"
         ],
         "prompt": "既然列表和元组都不可变，请解释为什么二者都不能直接替换元素。",
-        "reference_answer": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "reference_answer": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
         "accepted_keywords": [],
-        "rubric": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。"
+        "rubric": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。"
       }
     ],
     "mode": "live"
@@ -22,7 +22,7 @@
       {
         "category": "content",
         "reason": "prompt: 与可变性原文矛盾；建议：按原文修正",
-        "evidence": "question_id=Q1; component=prompt; 字符 0:30; report=quiz-g-3b918de8faa743f2ac713b827a434a3d.json",
+        "evidence": "question_id=Q1; component=prompt; 字符 0:30; report=quiz-g-93d2c22f52da46fab1b4b7078b681203.json",
         "knowledge_ids": [
           "K1"
         ],
@@ -30,6 +30,6 @@
       }
     ],
     "mode": "live",
-    "report_path": "<RUN_DIR>/reports/quiz-g-3b918de8faa743f2ac713b827a434a3d.json"
+    "report_path": "<RUN_DIR>/reports/quiz-g-93d2c22f52da46fab1b4b7078b681203.json"
   }
 }

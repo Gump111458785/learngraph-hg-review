@@ -8,10 +8,10 @@
         "knowledge_ids": [
           "K1"
         ],
-        "prompt": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "prompt": "在不创建新容器的情况下，列表与元组中哪一种允许通过下标赋值直接替换已有元素？请根据容器自身的可变性说明理由。",
         "reference_answer": "元组允许直接替换已有元素，列表不允许，因为元组可变而列表不可变。",
         "accepted_keywords": [],
-        "rubric": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。"
+        "rubric": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。"
       }
     ],
     "mode": "live"
@@ -22,7 +22,7 @@
       {
         "category": "content",
         "reason": "reference_answer: 与可变性原文矛盾；建议：按原文修正",
-        "evidence": "question_id=Q1; component=reference_answer; 字符 0:32; report=quiz-g-be1049a91a68471eb7a9bb4f2246b50c.json",
+        "evidence": "question_id=Q1; component=reference_answer; 字符 0:32; report=quiz-g-f25e9bbc598842af957ed54edb7d965e.json",
         "knowledge_ids": [
           "K1"
         ],
@@ -30,6 +30,6 @@
       }
     ],
     "mode": "live",
-    "report_path": "<RUN_DIR>/reports/quiz-g-be1049a91a68471eb7a9bb4f2246b50c.json"
+    "report_path": "<RUN_DIR>/reports/quiz-g-f25e9bbc598842af957ed54edb7d965e.json"
   }
 }

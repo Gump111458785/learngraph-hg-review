@@ -1,0 +1,21 @@
+{
+  "mode": "live",
+  "human_review": "pending for third batch",
+  "checks": {
+    "lesson_good": {
+      "passed": false,
+      "status": "needs_review"
+    },
+    "quiz_good": {
+      "blocked": true,
+      "validation_error": "练习审核引用了未提供的原文"
+    },
+    "quiz_bad_reference_answer": {
+      "blocked": true,
+      "validation_error": "练习审核组件与问题定位不一致"
+    }
+  },
+  "logical_calls": 3,
+  "authorized_limit": 3,
+  "all_expected": false
+}
