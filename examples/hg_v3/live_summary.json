@@ -1,8 +1,8 @@
 {
-  "responses_with_usage": 24,
-  "input_tokens": 31491,
-  "output_tokens": 17241,
-  "reference_estimate_usd": 0.00847095,
+  "responses_with_usage": 30,
+  "input_tokens": 42997,
+  "output_tokens": 22848,
+  "reference_estimate_usd": 0.02871813,
   "actual_invoice": "not available; estimate is not invoice",
   "batch_01": {
     "responses": 11,
@@ -22,5 +22,30 @@
     "authorized": 3,
     "budget_enforced": true,
     "all_expected": false
+  },
+  "batch_04": {
+    "responses": 2,
+    "authorized": 2,
+    "protocol_valid": true,
+    "semantic_all_expected": false
+  },
+  "batch_05_mini": {
+    "responses": 2,
+    "authorized": 2,
+    "protocol_valid": true,
+    "semantic_all_expected": true,
+    "model": "gpt-5.4-mini",
+    "reasoning": "low",
+    "input_equal_to_batch_04": true
+  },
+  "batch_06_mini_lessons": {
+    "responses": 2,
+    "authorized": 2,
+    "budget_enforced": true,
+    "all_expected": true,
+    "model": "gpt-5.4-mini",
+    "reasoning": "low",
+    "lesson_good": "pass",
+    "lesson_bad": "revise"
   }
 }

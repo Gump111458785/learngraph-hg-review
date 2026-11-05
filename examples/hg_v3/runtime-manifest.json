@@ -1,0 +1,27 @@
+{
+  "version": "0.3.2",
+  "package_files_sha256": {
+    "__init__.py": "eb757df9f6c59050d9215d113a2e78466a3ec308ebf6d5b4195f664b4b2c8294",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "agents.py": "61d8b5f860dd12938f73910da64b897454791a417d3c37bdabd81769b0fd8209",
+    "cli.py": "ced03e20e648abb20babc073f331676e57513045269208ff40ac00e5cb50745c",
+    "errors.py": "d6dae700044c83e2138c9945f19e4a93fc408617d37f4e733babb87770aa83f0",
+    "extract.py": "b30c823b3542fc473a4ee6e164a2c57971370b0443190b7d956d40564c41d2e4",
+    "gateway.py": "3b3eb425ea32e3818bdebd48065a9caeadbeb32fc1a6d44685c07e7877654b78",
+    "locations.py": "729e0ebd8e03e23f9b5409b6e6f42db4a018a36b78688a3b7e9c209d831cb8ee",
+    "models.py": "5d706d6aff09c670186c938696847fe333f86b90be78bb8091db7eeff68853ca",
+    "nodes.py": "b4ccd6c2b9d7d7b49aaa4f091a22393f5237b913d6ed8cccd7614f95236a47d8",
+    "prompts.py": "2cb21b2e39852e739253cd76784ee84c227aeeaaa49671b466d47842e9356b8e",
+    "quiz.py": "e829509366cd27face316dfed25c4f5ee4a2f4ecaf9f3ef485dc36d4b359097a",
+    "team_adapter.py": "5cffda6735371bec51153bfd036beeb767e4c9098f145f8bbd3d1b9ba3e4e683"
+  },
+  "recommended_profile": {
+    "H": "gpt-5-nano",
+    "H_reasoning": "minimal",
+    "G": "gpt-5.4-mini",
+    "G_reasoning": "low"
+  },
+  "live_comparison": "live_run_05_mini/manifest.json",
+  "scope": "Two quiz and two lesson cases on one Python topic; no broad accuracy claim.",
+  "live_lesson_checks": "live_run_06_mini_lessons/manifest.json"
+}

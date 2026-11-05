@@ -2,13 +2,13 @@
 
 负责的课程合作项目 **任务 2**：H 上传资料相关性与可采纳性审查、G 教学内容与来源核查，以及文件解析、引用定位和修订记录。
 
-这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.3.1**，在 0.2.0 基础上对齐团队 V3（2026-11-05，`97e04ca`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
+这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.3.2**，在 0.2.0 基础上对齐团队 V3（2026-11-05，`97e04ca`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
 
 ## V3 补充交付
 
-新增独立的练习分项审核：题干、参考答案、评分规则必须分别有结论和可定位依据。团队适配保留 `run_g_live(..., sources=当前会话原文)`，不再让 V3 回退到进程级 registry。独立仓库 SDK 3.37.0 下 **85 项测试通过**；团队新增 26 项专项测试，全量 **261 项通过**。
+新增独立的练习分项审核：题干、参考答案、评分规则必须分别有结论和可定位依据。团队适配保留 `run_g_live(..., sources=当前会话原文)`，不再让 V3 回退到进程级 registry。独立仓库 SDK 3.37.0 下 **87 项测试通过**；团队新增 28 项专项测试，全量 **263 项通过**。
 
-[验收与交接说明](docs/HG_V3_ACCEPTANCE.md) 包含输入、输出、复现命令和失败案例；[成员签收表](docs/HG_V3_SIGNOFF.md) 保持待实际接收方确认；[个人汇报模块页](docs/hg-v3/冯甘雨-HG-V3-验收汇报.pptx) 可供组长合并。`examples/hg_v3/expected_offline/` 是明确标识的预置记录，不是模型实测。团队脚本参考在 `integration/learngraph/tools/validate_hg.py`，应放到团队 `tools/` 运行。已有三批真实调用与首两批本人复核意见，保留误拒和协议失配，其他成员仍待签收。
+[验收与交接说明](docs/HG_V3_ACCEPTANCE.md) 包含输入、输出、复现命令和失败案例；[成员签收表](docs/HG_V3_SIGNOFF.md) 保持待实际接收方确认；[个人汇报模块页](docs/hg-v3/冯甘雨-HG-V3-验收汇报.pptx) 可供组长合并。`examples/hg_v3/expected_offline/` 是明确标识的预置记录，不是模型实测。团队脚本参考在 `integration/learngraph/tools/validate_hg.py`，应放到团队 `tools/` 运行。已有六批真实调用；mini 两例练习和两例教案符合预期，首两批本人复核及早期失败保留，其他成员仍待签收。
 
 ## 做了什么
 
@@ -57,7 +57,7 @@ python -m learngraph_review extract examples/upload_note.txt --id python-types -
 ## 真实 OpenAI API 使用
 
 首次将 `.env.example` 复制为 `.env`，已有配置勿覆盖。在本机填写 `OPENAI_API_KEY`，不要提交或发到聊天。
-默认 H/G 为 `gpt-5-nano`、推理强度 `minimal`；可分别修改 `OPENAI_MODEL_H`、`OPENAI_MODEL_G`，换模型时应同时确认其支持的推理参数。
+推荐验收配置为 H=`gpt-5-nano`/`minimal`、G=`gpt-5.4-mini`/`low`；库的兼容回退仍为 nano。可分别修改 `OPENAI_MODEL_H`、`OPENAI_MODEL_G`，换模型时应同时确认其支持的推理参数。
 
 **下面的 `h/g` 命令会真实调用 API**；独立 CLI 不受 `HG_REVIEW_MODE=mock` 控制。
 
@@ -92,6 +92,6 @@ R1 公共报告已支持 `review_status`、`report_path`，H 还返回 `approved
 
 ## 已知范围
 
-真实付费 API 联调尚未执行；目前的验证依据为离线测试和预置演示。团队 V3 已接通 H→A 采纳块和 G 的会话原文传递，部分采纳及来源隔离有离线测试；真实模型质量、人工复核和接收方签收仍待完成。
+真实付费 API 已有记录，见 V3 验收对照；同时保留离线测试和明确标记的预置演示。团队 V3 已接通 H→A 采纳块和 G 的会话原文传递，部分采纳及来源隔离有离线测试；多主题模型质量验证、新增批次人工复核和接收方签收仍待完成。
 
 不执行 OCR，不直接检查图片/音视频二进制内容；H 采纳表示候选资料准入，不代表已验证网站身份或全部事实。个人仓库未包含 API Key、个人上传文件、运行数据库或其他成员的实现代码。

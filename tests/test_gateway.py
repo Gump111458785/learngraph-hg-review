@@ -150,3 +150,46 @@ def test_non_reasoning_model_omits_reasoning_parameter():
 def test_estimate_counts_reasoning_as_part_of_output_not_twice():
     assert estimate_cost("gpt-5-nano", 1_000_000, 0, 1_000_000) == pytest.approx(0.45)
     assert estimate_cost("custom-model", 100, 0, 20) is None
+
+
+def test_g_reasoning_override_does_not_change_h_legacy_request(monkeypatch):
+    monkeypatch.setenv("OPENAI_REASONING_EFFORT", "minimal")
+    monkeypatch.delenv("OPENAI_REASONING_EFFORT_H", raising=False)
+    monkeypatch.setenv("OPENAI_REASONING_EFFORT_G", "low")
+    settings = Settings.from_env()
+    efforts = []
+
+    def handler(request):
+        efforts.append(json.loads(request.content)["reasoning"]["effort"])
+        return httpx.Response(200, json=response_body())
+
+    gateway = make_gateway(handler, settings)
+    for effort in [settings.reasoning_effort_h, settings.reasoning_effort_g]:
+        gateway.run(
+            model="gpt-5-nano",
+            instructions="role setting test",
+            payload={},
+            schema=GModelResult,
+            reasoning_effort=effort,
+        )
+    assert efforts == ["minimal", "low"]
+
+
+def test_empty_role_override_can_omit_reasoning_without_changing_legacy():
+    requests = []
+
+    def handler(request):
+        requests.append(json.loads(request.content))
+        return httpx.Response(200, json=response_body())
+
+    gateway = make_gateway(handler)
+    gateway.run(
+        model="gpt-5-nano",
+        instructions="test",
+        payload={},
+        schema=GModelResult,
+        reasoning_effort="",
+    )
+    run(gateway)
+    assert "reasoning" not in requests[0]
+    assert requests[1]["reasoning"]["effort"] == "minimal"

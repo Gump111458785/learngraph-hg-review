@@ -1,0 +1,39 @@
+{
+  "settings": {
+    "model_h": "gpt-5-nano",
+    "model_g": "gpt-5.4-mini",
+    "reasoning_effort": "low",
+    "max_output_tokens": 6000,
+    "timeout_seconds": 60.0,
+    "max_input_chars": 60000
+  },
+  "code_commit": "13a40234ad8df4579865b1b05eb312c1cadf0f46",
+  "mode": "live",
+  "human_review": "pending for final constraint checks",
+  "checks": {
+    "quiz_good": {
+      "status": "pass",
+      "protocol_valid": true,
+      "components": {
+        "prompt": "pass",
+        "reference_answer": "pass",
+        "rubric": "pass"
+      },
+      "report_path": "<RUN_DIR>/reports/quiz-g-c830511be6c04b44a44db3f31c7d6b0b.json"
+    },
+    "quiz_bad_reference_answer": {
+      "status": "revise",
+      "protocol_valid": true,
+      "components": {
+        "prompt": "pass",
+        "reference_answer": "revise",
+        "rubric": "pass"
+      },
+      "report_path": "<RUN_DIR>/reports/quiz-g-b34351dc0b4c4585b25e768f93d43118.json"
+    }
+  },
+  "logical_calls": 2,
+  "authorized_limit": 2,
+  "protocol_all_valid": true,
+  "semantic_all_expected": true
+}

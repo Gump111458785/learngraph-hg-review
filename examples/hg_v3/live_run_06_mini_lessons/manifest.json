@@ -1,0 +1,30 @@
+{
+  "settings": {
+    "model_h": "gpt-5-nano",
+    "model_g": "gpt-5.4-mini",
+    "reasoning_effort": "minimal",
+    "max_output_tokens": 6000,
+    "timeout_seconds": 60.0,
+    "max_input_chars": 60000,
+    "reasoning_effort_h": null,
+    "reasoning_effort_g": "low"
+  },
+  "code_commit": "13a40234ad8df4579865b1b05eb312c1cadf0f46",
+  "mode": "live",
+  "human_review": "pending for sixth batch",
+  "checks": {
+    "lesson_good": {
+      "passed": true,
+      "status": "pass",
+      "report_path": "<RUN_DIR>/reports/g-85b31fde090d4c738e5cd431b5864ba5.json"
+    },
+    "lesson_bad": {
+      "passed": false,
+      "status": "revise",
+      "report_path": "<RUN_DIR>/reports/g-67cc059da6f6470097a43d1fea88b9b3.json"
+    }
+  },
+  "logical_calls": 2,
+  "authorized_limit": 2,
+  "all_expected": true
+}

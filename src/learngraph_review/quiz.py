@@ -153,6 +153,11 @@ def review_quiz(
                 "sources": [s.model_dump() for s in sources],
             },
             schema=response_schema,
+            **(
+                {"reasoning_effort": service.settings.reasoning_effort_g}
+                if service.settings.reasoning_effort_g is not None
+                else {}
+            ),
         )
     except ValidationError as exc:
         raise ReviewError("练习模型结果不符合当前目标与审核协议") from exc

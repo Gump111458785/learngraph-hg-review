@@ -1,0 +1,30 @@
+{
+  "mode": "live",
+  "human_review": "pending for final constraint checks",
+  "checks": {
+    "quiz_good": {
+      "status": "revise",
+      "protocol_valid": true,
+      "components": {
+        "prompt": "revise",
+        "reference_answer": "revise",
+        "rubric": "revise"
+      },
+      "report_path": "<RUN_DIR>/reports/quiz-g-577922632e2c4698805f464173f183bd.json"
+    },
+    "quiz_bad_reference_answer": {
+      "status": "needs_review",
+      "protocol_valid": true,
+      "components": {
+        "prompt": "needs_review",
+        "reference_answer": "needs_review",
+        "rubric": "needs_review"
+      },
+      "report_path": "<RUN_DIR>/reports/quiz-g-5c88d8efadd54b3d8e6d46676fa2f731.json"
+    }
+  },
+  "logical_calls": 2,
+  "authorized_limit": 2,
+  "protocol_all_valid": true,
+  "semantic_all_expected": false
+}

@@ -1,0 +1,57 @@
+{
+  "draft": {
+    "lesson_id": "L1",
+    "title": "Python 列表与元组",
+    "objective": "能区分列表和元组的可变性",
+    "knowledge_ids": [
+      "K1"
+    ],
+    "sections": [
+      {
+        "heading": "可变性",
+        "body": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。这里讨论容器自身的元素绑定；元组内部若引用可变对象，改变该对象内容不等于替换元组元素。",
+        "source_ids": [
+          "src-11b1965c373e3867"
+        ]
+      }
+    ],
+    "mode": "live"
+  },
+  "sources": [
+    {
+      "id": "src-11b1965c373e3867",
+      "title": "mixed-material.docx",
+      "source": "mixed-material.docx",
+      "blocks": [
+        {
+          "id": "b0001",
+          "text": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+          "page": null,
+          "paragraph": 1,
+          "source_start": 0
+        }
+      ],
+      "extraction_notes": [
+        "提取正文段落和表格行；paragraph 为正文/表格行顺序编号。",
+        "不含页眉页脚、批注、文本框及图片内文字；未检查视觉排版。",
+        "候选资料由 H 准入：h-7b6543c0bb2e4709b5a50496fb1a22f4"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "source_id": "src-11b1965c373e3867",
+      "title": "mixed-material.docx",
+      "locator": "mixed-material.docx",
+      "claim": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+      "knowledge_id": "K1",
+      "source_type": "fixture",
+      "mode": "live"
+    }
+  ],
+  "quiz": {
+    "prompt": "在不创建新容器的情况下，列表与元组中哪一种允许通过下标赋值直接替换已有元素？请根据容器自身的可变性说明理由。",
+    "reference_answer": "列表允许通过下标赋值直接替换已有元素，因为列表自身可变；元组不允许，因为元组自身不可变。这里仅讨论容器元素绑定，不讨论内部对象的修改。",
+    "rubric": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。"
+  }
+}

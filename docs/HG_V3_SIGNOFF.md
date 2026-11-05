@@ -2,7 +2,7 @@
 
 状态：**本人对首两批的人工复核已确认，等待成员 1/3/6 实际接收签收**。表格中的待填项不构成通过记录。
 
-提交版本：提交后填写实际 SHA。复现步骤和全部样例见 [HG_V3_ACCEPTANCE.md](HG_V3_ACCEPTANCE.md)。
+代码验收版本：个人包 **0.3.2** 对齐 [团队 PR #8 当前代码](https://github.com/TheTry16/learngraph-multiagent/pull/8/files)。源码指纹见 `examples/hg_v3/runtime-manifest.json`，不受文档补录提交影响；接收方运行时记录实际 HEAD。复现步骤和全部样例见 [HG_V3_ACCEPTANCE.md](HG_V3_ACCEPTANCE.md)。
 
 | 接收方 | 需要确认 | 状态 | 姓名、日期、版本及具体差异 |
 |---|---|---|---|

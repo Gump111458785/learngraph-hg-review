@@ -201,6 +201,11 @@ class ReviewService:
             instructions=H_PROMPT,
             payload={"context": context.model_dump(), "material": material.model_dump()},
             schema=HModelResult,
+            **(
+                {"reasoning_effort": self.settings.reasoning_effort_h}
+                if self.settings.reasoning_effort_h is not None
+                else {}
+            ),
         )
         ids = [d.block_id for d in result.decisions]
         expected = {b.id for b in material.blocks}
@@ -263,6 +268,11 @@ class ReviewService:
                 "deterministic_checks": [c.model_dump() for c in checks],
             },
             schema=GModelResult,
+            **(
+                {"reasoning_effort": self.settings.reasoning_effort_g}
+                if self.settings.reasoning_effort_g is not None
+                else {}
+            ),
         )
         if len(result.checked_objectives) != len(context.objectives) or sorted(
             result.checked_objectives

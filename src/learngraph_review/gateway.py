@@ -23,6 +23,8 @@ class Settings:
     max_output_tokens: int = 6000
     timeout_seconds: float = 60
     max_input_chars: int = 60_000
+    reasoning_effort_h: str | None = None
+    reasoning_effort_g: str | None = None
 
     def __post_init__(self) -> None:
         if self.max_output_tokens < 256 or self.timeout_seconds <= 0 or self.max_input_chars < 100:
@@ -37,6 +39,8 @@ class Settings:
             model_h=os.getenv("OPENAI_MODEL_H", "gpt-5-nano"),
             model_g=os.getenv("OPENAI_MODEL_G", "gpt-5-nano"),
             reasoning_effort=os.getenv("OPENAI_REASONING_EFFORT", "minimal"),
+            reasoning_effort_h=os.getenv("OPENAI_REASONING_EFFORT_H"),
+            reasoning_effort_g=os.getenv("OPENAI_REASONING_EFFORT_G"),
             max_output_tokens=int(os.getenv("OPENAI_MAX_OUTPUT_TOKENS", "6000")),
             timeout_seconds=float(os.getenv("OPENAI_TIMEOUT_SECONDS", "60")),
         )
@@ -50,6 +54,7 @@ class Gateway(Protocol):
         instructions: str,
         payload: dict,
         schema: type[ResultT],
+        reasoning_effort: str | None = None,
     ) -> tuple[ResultT, Usage]: ...
 
 
@@ -57,6 +62,8 @@ class Gateway(Protocol):
 # Unknown models intentionally have no cost estimate. Actual billing remains authoritative.
 PRICES = {
     "gpt-5-nano": (0.05, 0.005, 0.40),
+    # Verified 2026-11-05: developers.openai.com/api/docs/models/gpt-5.4-mini
+    "gpt-5.4-mini": (0.75, 0.075, 4.50),
     "gpt-5.4-nano": (0.20, 0.02, 1.25),
 }
 
@@ -91,12 +98,13 @@ class OpenAIGateway:
         instructions: str,
         payload: dict,
         schema: type[ResultT],
+        reasoning_effort: str | None = None,
     ) -> tuple[ResultT, Usage]:
         serialized = json.dumps(payload, ensure_ascii=False)
         if len(serialized) + len(instructions) > self.settings.max_input_chars:
             raise ReviewError("单次审查超过 60000 字符预算；请按资料或教学单元拆分，不能截断后通过")
         extra = {}
-        effort = self.settings.reasoning_effort
+        effort = self.settings.reasoning_effort if reasoning_effort is None else reasoning_effort
         if model.startswith(("gpt-5", "gpt-6", "o1", "o3", "o4")) and effort:
             extra["reasoning"] = {"effort": effort}
         start = time.monotonic()

@@ -1,0 +1,68 @@
+{
+  "limit": 2,
+  "started": 2,
+  "calls": [
+    {
+      "number": 1,
+      "case": "lesson_good",
+      "status": "completed",
+      "usage": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "response_id": "resp_0725f6ca7b458f8b016aec4960a77087d08624938892ace0b8",
+        "input_tokens": 1765,
+        "cached_input_tokens": 0,
+        "output_tokens": 197,
+        "reasoning_tokens": 111,
+        "estimated_cost_usd": 0.00221025,
+        "elapsed_seconds": 3.839
+      },
+      "output": {
+        "summary": "已核查该单节内容稿与提供来源，核心表述与来源一致，且与课程目标“能区分列表和元组的可变性”一致，没有发现需要返修的明显错误或无依据主张。",
+        "issues": [],
+        "checked_objectives": [
+          "能区分列表和元组的可变性"
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "case": "lesson_bad",
+      "status": "completed",
+      "usage": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "response_id": "resp_0938370f4126c2b0016aec49631ff887d0a60849a50e9dd630",
+        "input_tokens": 1663,
+        "cached_input_tokens": 0,
+        "output_tokens": 415,
+        "reasoning_tokens": 99,
+        "estimated_cost_usd": 0.00311475,
+        "elapsed_seconds": 3.331
+      },
+      "output": {
+        "summary": "检测到单节内容与来源材料直接相反：列表/元组的可变性表述错误，需修正后再使用。",
+        "issues": [
+          {
+            "category": "contradiction",
+            "severity": "error",
+            "target": {
+              "block_id": "section-1",
+              "quote": "列表是不可变序列，不能替换已有元素；元组是可变序列，可以直接替换其中元素。",
+              "occurrence": 0
+            },
+            "message": "该表述与来源原文相反。来源明确说明“列表是可变序列，可以替换已有元素，也可以追加元素；元组是不可变序列，创建后不能直接替换元组中的元素”。当前稿件把两者的可变性对调了。",
+            "suggestion": "改为：列表是可变序列，可以替换已有元素，也可以追加元素；元组是不可变序列，创建后不能直接替换其中元素。",
+            "source_id": "src-11b1965c373e3867",
+            "source_anchor": {
+              "block_id": "reference",
+              "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。",
+              "occurrence": 0
+            }
+          }
+        ],
+        "checked_objectives": [
+          "能区分列表和元组的可变性"
+        ]
+      }
+    }
+  ]
+}

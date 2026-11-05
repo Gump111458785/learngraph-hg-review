@@ -1,0 +1,207 @@
+{
+  "review_id": "quiz-g-b34351dc0b4c4585b25e768f93d43118",
+  "created_at": "2026-11-05T08:54:52.562191+00:00",
+  "lesson_id": "L1",
+  "question_id": "Q1",
+  "quiz_hash": "42cd53b533cb5203c0e475087fe975d80b290497a33ba0526efaecb3bd70d79b",
+  "lesson_hash": "016e76b22c75242fb0a9ae925b196b1737131ea4ae7d7fd8b51bf8ec0d77f12b",
+  "sources_hash": "6f5cc428c80553abbe33483458023087f721e4d39d9a9566f4422581cbdbcfb4",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "status": "revise",
+  "summary": "题目围绕“列表与元组的可变性”设问清楚；参考答案与原文相反，需要修正；评分规则与原文和题意一致。",
+  "checks": [
+    {
+      "component": "prompt",
+      "status": "pass",
+      "reason": "题干明确要求比较列表与元组在“通过下标赋值直接替换已有元素”这一点上的差异，问题可直接作答，且与本课“可变性”目标一致，没有偷换条件。",
+      "suggestion": "无需修改。",
+      "target": {
+        "block_id": "prompt",
+        "quote": "在不创建新容器的情况下，列表与元组中哪一种允许通过下标赋值直接替换已有元素？请根据容器自身的可变性说明理由。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": "src-11b1965c373e3867",
+      "source_anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。",
+        "occurrence": 0
+      },
+      "location": {
+        "document_id": "Q1",
+        "block_id": "prompt",
+        "quote": "在不创建新容器的情况下，列表与元组中哪一种允许通过下标赋值直接替换已有元素？请根据容器自身的可变性说明理由。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 54,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": {
+        "document_id": "src-11b1965c373e3867",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 32,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    },
+    {
+      "component": "reference_answer",
+      "status": "revise",
+      "reason": "参考答案与原文结论相反：原文明确说明列表可变、可以替换已有元素；元组不可变、不能直接替换元素。当前答案把两者颠倒了。",
+      "suggestion": "改为：\"列表允许直接替换已有元素，元组不允许，因为列表可变、元组不可变。\"",
+      "target": {
+        "block_id": "reference_answer",
+        "quote": "元组允许直接替换已有元素，列表不允许，因为元组可变而列表不可变。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": "src-11b1965c373e3867",
+      "source_anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。",
+        "occurrence": 0
+      },
+      "location": {
+        "document_id": "Q1",
+        "block_id": "reference_answer",
+        "quote": "元组允许直接替换已有元素，列表不允许，因为元组可变而列表不可变。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 32,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": {
+        "document_id": "src-11b1965c373e3867",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 32,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    },
+    {
+      "component": "rubric",
+      "status": "pass",
+      "reason": "评分规则要求指出列表可通过下标赋值替换元素、元组不允许，并要求说明可变性理由，这与原文一致，也没有额外要求题目未涉及的知识。",
+      "suggestion": "无需修改。",
+      "target": {
+        "block_id": "rubric",
+        "quote": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": "src-11b1965c373e3867",
+      "source_anchor": {
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。",
+        "occurrence": 0
+      },
+      "location": {
+        "document_id": "Q1",
+        "block_id": "rubric",
+        "quote": "满分 2 分：指出列表允许、元组不允许通过下标赋值替换元素得 1 分；正确说明列表可变、元组不可变得 1 分。未解释理由只得第 1 分；可变性判断颠倒不得相应分。不要求讨论元组内部对象。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 93,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": {
+        "document_id": "src-11b1965c373e3867",
+        "block_id": "b0001",
+        "quote": "Python 列表是可变序列，可以替换已有元素，也可以追加元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 32,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": 1,
+        "source_start": 0
+      }
+    }
+  ],
+  "usage": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "response_id": "resp_03c50c1a9261d95a016aec4455924487d0a5f121c32c18b320",
+    "input_tokens": 2009,
+    "cached_input_tokens": 0,
+    "output_tokens": 1113,
+    "reasoning_tokens": 336,
+    "estimated_cost_usd": 0.00651525,
+    "elapsed_seconds": 7.568
+  }
+}
