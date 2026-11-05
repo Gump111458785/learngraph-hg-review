@@ -1,0 +1,14 @@
+[
+  {
+    "file_path": "<RUN_DIR>/mixed-material.docx",
+    "status": "unreviewed",
+    "reason": "离线预置：准入知识段，排除广告；详细记录：<RUN_DIR>/reports/h-51e5a00a032e4662906a9c6156855edf.json；仅已采纳块：<RUN_DIR>/reports/h-51e5a00a032e4662906a9c6156855edf-sources.json；公共协议不支持块级准入，A 不得读取整个原文件，请接入 sources JSON。",
+    "cited_locations": [
+      "{\"document_id\":\"src-d82020724cce17c9\",\"block_id\":\"b0001\",\"quote\":\"Python 列表是可变序列，可以替换已有元素，也可以追加元素。Python 元组是不可变序列，创建后不能直接替换元组中的元素。讨论的是容器自身的元素绑定，不是元组内部可变对象的内容。\",\"occurrence\":0,\"start\":0,\"end\":92,\"line_start\":1,\"line_end\":1,\"page\":null,\"paragraph\":1,\"source_start\":0}"
+    ],
+    "mode": "live",
+    "review_status": "partial",
+    "report_path": "<RUN_DIR>/reports/h-51e5a00a032e4662906a9c6156855edf.json",
+    "approved_sources_path": "<RUN_DIR>/reports/h-51e5a00a032e4662906a9c6156855edf-sources.json"
+  }
+]

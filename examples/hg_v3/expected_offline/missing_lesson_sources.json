@@ -1,0 +1,20 @@
+{
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "evidence",
+        "reason": "当前教案缺少可核对的会话原文",
+        "evidence": "缺失来源编号：src-d82020724cce17c9",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": [
+          "Python 列表与元组 能区分列表和元组的可变性 原始资料"
+        ]
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/source-preflight-546267bc8e25432ab2ce39cfaa023e50.json"
+  }
+}

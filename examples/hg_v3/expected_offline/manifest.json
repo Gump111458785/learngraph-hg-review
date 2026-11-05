@@ -1,0 +1,112 @@
+{
+  "mode": "offline",
+  "cases": {
+    "h_partial": {
+      "actual": "partial",
+      "expected": "partial",
+      "accepted_block_ids": [
+        "b0001"
+      ],
+      "warnings": []
+    },
+    "lesson_bad": {
+      "passed": false,
+      "categories": [
+        "content"
+      ],
+      "report_path": "<RUN_DIR>/reports/diagnosis-0a6b537096954191a72c33e24cc5e69a.json"
+    },
+    "lesson_good": {
+      "passed": true,
+      "categories": [],
+      "report_path": "<RUN_DIR>/reports/g-18cf20fb74c647cb8fad7b56cb735a02.json"
+    },
+    "uncertain": {
+      "passed": false,
+      "categories": [
+        "uncertain"
+      ],
+      "report_path": "<RUN_DIR>/reports/g-14fa0c7dbebc46968dc2b687e7fcbed7.json"
+    },
+    "quiz_good": {
+      "passed": true,
+      "issues": [],
+      "report_path": "<RUN_DIR>/reports/quiz-g-e8b8e566eac64d63b425b266a676bfcd.json"
+    },
+    "quiz_bad_prompt": {
+      "passed": false,
+      "issues": [
+        {
+          "category": "content",
+          "reason": "prompt: 与可变性原文矛盾；建议：按原文修正",
+          "evidence": "question_id=Q1; component=prompt; 字符 0:30; report=quiz-g-3b918de8faa743f2ac713b827a434a3d.json",
+          "knowledge_ids": [
+            "K1"
+          ],
+          "queries": []
+        }
+      ],
+      "report_path": "<RUN_DIR>/reports/quiz-g-3b918de8faa743f2ac713b827a434a3d.json"
+    },
+    "quiz_bad_reference_answer": {
+      "passed": false,
+      "issues": [
+        {
+          "category": "content",
+          "reason": "reference_answer: 与可变性原文矛盾；建议：按原文修正",
+          "evidence": "question_id=Q1; component=reference_answer; 字符 0:32; report=quiz-g-be1049a91a68471eb7a9bb4f2246b50c.json",
+          "knowledge_ids": [
+            "K1"
+          ],
+          "queries": []
+        }
+      ],
+      "report_path": "<RUN_DIR>/reports/quiz-g-be1049a91a68471eb7a9bb4f2246b50c.json"
+    },
+    "quiz_bad_rubric": {
+      "passed": false,
+      "issues": [
+        {
+          "category": "content",
+          "reason": "rubric: 与可变性原文矛盾；建议：按原文修正",
+          "evidence": "question_id=Q1; component=rubric; 字符 0:35; report=quiz-g-c8e91426eba2489da521f442c979240a.json",
+          "knowledge_ids": [
+            "K1"
+          ],
+          "queries": []
+        }
+      ],
+      "report_path": "<RUN_DIR>/reports/quiz-g-c8e91426eba2489da521f442c979240a.json"
+    },
+    "missing_lesson_sources": {
+      "passed": false,
+      "categories": [
+        "evidence"
+      ],
+      "queries": [
+        "Python 列表与元组 能区分列表和元组的可变性 原始资料"
+      ]
+    },
+    "missing_sources": {
+      "blocked": true,
+      "reason": "练习审核缺少教案引用的会话原文"
+    }
+  },
+  "human_review": "pending",
+  "signoffs": {},
+  "model_h": "gpt-5-nano",
+  "model_g": "gpt-5-nano",
+  "expectation_checks": {
+    "h_partial": true,
+    "lesson_good": true,
+    "lesson_bad": true,
+    "uncertain": true,
+    "quiz_good": true,
+    "missing_lesson_sources": true,
+    "quiz_bad_prompt": true,
+    "quiz_bad_reference_answer": true,
+    "quiz_bad_rubric": true
+  },
+  "all_expected": true,
+  "scripted_model_responses": true
+}

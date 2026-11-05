@@ -1,0 +1,35 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "reference_answer": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "accepted_keywords": [],
+        "rubric": "只有回答元组可直接替换元素、列表不可替换才给满分；说列表可变一律零分。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "content",
+        "reason": "rubric: 与可变性原文矛盾；建议：按原文修正",
+        "evidence": "question_id=Q1; component=rubric; 字符 0:35; report=quiz-g-c8e91426eba2489da521f442c979240a.json",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-c8e91426eba2489da521f442c979240a.json"
+  }
+}

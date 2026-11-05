@@ -1,0 +1,26 @@
+{
+  "draft": {
+    "lesson_id": "L1",
+    "title": "Python 列表与元组",
+    "objective": "能区分列表和元组的可变性",
+    "knowledge_ids": [
+      "K1"
+    ],
+    "sections": [
+      {
+        "heading": "可变性",
+        "body": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "source_ids": [
+          "src-d82020724cce17c9"
+        ]
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": true,
+    "issues": [],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/g-18cf20fb74c647cb8fad7b56cb735a02.json"
+  }
+}

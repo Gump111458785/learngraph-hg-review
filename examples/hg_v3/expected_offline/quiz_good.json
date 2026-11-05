@@ -1,0 +1,25 @@
+{
+  "quiz": {
+    "lesson_id": "L1",
+    "questions": [
+      {
+        "question_id": "Q1",
+        "lesson_id": "L1",
+        "knowledge_ids": [
+          "K1"
+        ],
+        "prompt": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "reference_answer": "列表允许，因为列表是可变序列；元组不允许直接替换已有元素，因为元组是不可变序列。",
+        "accepted_keywords": [],
+        "rubric": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。"
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": true,
+    "issues": [],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/quiz-g-e8b8e566eac64d63b425b266a676bfcd.json"
+  }
+}

@@ -2,7 +2,13 @@
 
 负责的课程合作项目 **任务 2**：H 上传资料相关性与可采纳性审查、G 教学内容与来源核查，以及文件解析、引用定位和修订记录。
 
-这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.2.0**，已对齐 2026-10-27 团队 R1 框架（`d129c60`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
+这是冯甘雨的个人 H/G 模块仓库，当前版本 **0.3.0**，在 0.2.0 基础上对齐团队 V3（2026-11-05，`97e04ca`）。可独立安装、测试和运行命令行；接入团队主工程的文件集中在 [integration/learngraph/](integration/learngraph/)。团队项目：[TheTry16/learngraph-multiagent](https://github.com/TheTry16/learngraph-multiagent)（按团队仓库权限访问）。
+
+## V3 补充交付
+
+新增独立的练习分项审核：题干、参考答案、评分规则必须分别有结论和可定位依据。团队适配保留 `run_g_live(..., sources=当前会话原文)`，不再让 V3 回退到进程级 registry。独立仓库 SDK 3.37.0 下 **84 项测试通过**；团队新增 20 项专项测试，全量 **255 项通过**。
+
+[验收与交接说明](docs/HG_V3_ACCEPTANCE.md) 包含输入、输出、复现命令和失败案例；[成员签收表](docs/HG_V3_SIGNOFF.md) 保持待实际接收方确认；[个人汇报模块页](docs/hg-v3/冯甘雨-HG-V3-离线验收汇报.pptx) 可供组长合并。`examples/hg_v3/expected_offline/` 是明确标识的预置记录，不是模型实测。团队脚本参考在 `integration/learngraph/tools/validate_hg.py`，应放到团队 `tools/` 运行。真实 API 外发与费用等待用户明确授权；没有虚构人工签收。
 
 ## 做了什么
 
@@ -78,7 +84,7 @@ run_g(draft: LessonDraft, evidence: list[EvidenceItem]) -> LessonAudit
 
 R1 公共报告已支持 `review_status`、`report_path`，H 还返回 `approved_sources_path`。H 部分采纳时仍保留文件级 `unreviewed`，只把采纳块写入交接 JSON；G 的 `needs_review` 可由主图立即阻塞。公共 G `issues` 不再自动拼接逐字正文和本地文件路径，完整定位保存在详细报告。适配层也兼容缺少这些可选字段的旧公共合同。
 
-团队入口默认 `HG_REVIEW_MODE=mock`，改为 `live` 才调用真实 API。G 还需配置 `HG_SOURCES_FILE`，提供与 A 的 source_id/locator 对应的**实际原文 Material 数组**，不能把 A 的 claim 摘要当原文。详细记录默认写入 `outputs/hg/`。相对路径以团队项目根目录为基准；非标准嵌入方式可设置 `HG_PROJECT_ROOT` 为绝对项目目录。
+团队入口默认 `HG_REVIEW_MODE=mock`，改为 `live` 才调用真实 API。V3 直接传递会话的实际原文 `Material` 数组；旧独立 G 签名仍可配置 `HG_SOURCES_FILE`。来源编号/locator 必须匹配，不能把 A 的 claim 摘要当原文。详细记录默认写入 `outputs/hg/`。相对路径以团队项目根目录为基准；非标准嵌入方式可设置 `HG_PROJECT_ROOT` 为绝对项目目录。
 
 公共 D 目前只提供来源 ID，公共 G 的定位因此对应合并提取文本；精确引句/页段定位、严格版本绑定仍通过内部丰富模型使用。团队主图负责历史交付保护，不能宣称它已自动使用所有内部能力。
 
@@ -86,6 +92,6 @@ R1 公共报告已支持 `review_status`、`report_path`，H 还返回 `approved
 
 ## 已知范围
 
-真实付费 API 联调尚未执行；目前的验证依据为离线测试和预置演示。团队 R1 已保存真实上传字节并提供隔离和大小检查；H→A 的采纳块接入、G 的真实来源注册表与完整真实闭环仍待对应成员联调。当前主图会在 H→A 未接通处明确阻塞。
+真实付费 API 联调尚未执行；目前的验证依据为离线测试和预置演示。团队 V3 已接通 H→A 采纳块和 G 的会话原文传递，部分采纳及来源隔离有离线测试；真实模型质量、人工复核和接收方签收仍待完成。
 
 不执行 OCR，不直接检查图片/音视频二进制内容；H 采纳表示候选资料准入，不代表已验证网站身份或全部事实。个人仓库未包含 API Key、个人上传文件、运行数据库或其他成员的实现代码。

@@ -65,6 +65,47 @@ def _save(name: str, value) -> Path:
     return path
 
 
+def run_quiz_live(draft, quiz, evidence, sources):
+    """Review each quiz component against this session's original materials."""
+    from core.llm import get_review_service
+
+    from .quiz import QuizDraft, review_quiz
+
+    if quiz.lesson_id != draft.lesson_id or len(quiz.questions) != 1:
+        raise ReviewError("练习与教案课节不匹配，或题目数量不符合当前协议")
+    question = quiz.questions[0]
+    if question.lesson_id != draft.lesson_id:
+        raise ReviewError("题目所属课节与教案不匹配")
+    if not set(question.knowledge_ids) <= set(draft.knowledge_ids):
+        raise ReviewError("练习知识点不属于当前教案")
+    originals = [Material.model_validate(s) for s in sources]
+    ids = {sid for section in draft.sections for sid in section.source_ids}
+    evidence_map = {e.source_id: e for e in evidence}
+    original_map = {s.id: s for s in originals}
+    if len(evidence_map) != len(evidence) or len(original_map) != len(originals):
+        raise ReviewError("练习原文或证据编号重复")
+    if not ids or not ids <= original_map.keys() or not ids <= evidence_map.keys():
+        raise ReviewError("练习审核缺少教案引用的会话原文")
+    for sid in ids:
+        if evidence_map[sid].locator.split("#", 1)[0] != original_map[sid].source.split("#", 1)[0]:
+            raise ReviewError("练习审核原文与证据 locator 不匹配")
+    report = review_quiz(
+        get_review_service(),
+        Context(topic=draft.title, objectives=[draft.objective]),
+        QuizDraft(
+            lesson_id=question.lesson_id,
+            question_id=question.question_id,
+            prompt=question.prompt,
+            reference_answer=question.reference_answer,
+            rubric=question.rubric,
+        ),
+        [TextBlock(id=f"section-{i}", text=s.body) for i, s in enumerate(draft.sections, 1)],
+        [original_map[sid] for sid in sorted(ids)],
+    )
+    path = _save(f"{report.review_id}.json", report.model_dump(mode="json"))
+    return report, path
+
+
 def run_h_live(request):
     from core.contracts import FileReviewReport
     from core.llm import get_review_service
@@ -114,7 +155,7 @@ def run_h_live(request):
     return reviews
 
 
-def run_g_live(draft, evidence):
+def run_g_live(draft, evidence, *, sources=None):
     from core.contracts import LessonAudit
     from core.llm import get_review_service
 
@@ -127,13 +168,17 @@ def run_g_live(draft, evidence):
     if not cited or not set(cited) <= evidence_map.keys():
         raise ReviewError("G 缺少有效来源编号，或 D 引用了 A 未提供的来源")
     registry_path = os.getenv("HG_SOURCES_FILE", "").strip()
-    if not registry_path:
+    if sources is None and not registry_path:
         raise ReviewError(
             "G 真实审查需要 HG_SOURCES_FILE 原文数组；不能将 EvidenceItem.claim 当原文"
         )
     try:
-        raw = json.loads(project_path(registry_path).read_text(encoding="utf-8"))
-        originals = [Material.model_validate(item) for item in raw]
+        if sources is not None:
+            originals = [Material.model_validate(item) for item in sources]
+        else:
+            registry_file = project_path(registry_path)
+            raw = json.loads(registry_file.read_text(encoding="utf-8"))
+            originals = [Material.model_validate(item) for item in raw]
     except (OSError, ValueError, TypeError) as exc:
         raise ReviewError("G 来源原文文件无法读取或格式无效") from exc
     registry = {m.id: m for m in originals}

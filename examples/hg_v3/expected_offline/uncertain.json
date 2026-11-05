@@ -1,0 +1,34 @@
+{
+  "draft": {
+    "lesson_id": "L1",
+    "title": "Python 列表与元组",
+    "objective": "能区分列表和元组的可变性",
+    "knowledge_ids": [
+      "K1"
+    ],
+    "sections": [
+      {
+        "heading": "可变性",
+        "body": "没有任何测试或额外资料也能保证所有程序使用元组后运行速度提高十倍。",
+        "source_ids": [
+          "src-d82020724cce17c9"
+        ]
+      }
+    ],
+    "mode": "live"
+  },
+  "decision": {
+    "passed": false,
+    "issues": [
+      {
+        "category": "uncertain",
+        "reason": "G 要求人工复核",
+        "evidence": "[warning/missing_evidence] section-1 字符 0:33 问题：原文不支持十倍性能保证 建议：补性能实验",
+        "knowledge_ids": [],
+        "queries": []
+      }
+    ],
+    "mode": "live",
+    "report_path": "<RUN_DIR>/reports/g-14fa0c7dbebc46968dc2b687e7fcbed7.json"
+  }
+}

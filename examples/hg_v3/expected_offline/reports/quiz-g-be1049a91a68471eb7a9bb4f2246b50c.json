@@ -1,0 +1,159 @@
+{
+  "review_id": "quiz-g-be1049a91a68471eb7a9bb4f2246b50c",
+  "created_at": "2026-11-05T07:19:59.180475+00:00",
+  "lesson_id": "L1",
+  "question_id": "Q1",
+  "quiz_hash": "a721ad616fef7d986eb14a0c664866819ce5a518522051dd02a80cc6aa2f9455",
+  "lesson_hash": "fe63042fcb08803e48b21ff17792f6220fdb8d0ee024c20d3d62cd2963e8743d",
+  "sources_hash": "67d8f059adcb17b5a25faa912409566f97bc97da9a55a3a09163354f3556aa68",
+  "context_hash": "e1c6b2794c9a036b77a52aae38567d0d8fd6ad4459a4aabe94e9c31219ab6b46",
+  "status": "revise",
+  "summary": "离线预置的分项审核",
+  "checks": [
+    {
+      "component": "prompt",
+      "status": "pass",
+      "reason": "与教案依据一致",
+      "suggestion": "保留",
+      "target": {
+        "block_id": "prompt",
+        "quote": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": null,
+      "source_anchor": null,
+      "location": {
+        "document_id": "Q1",
+        "block_id": "prompt",
+        "quote": "列表与元组中，哪一种允许直接替换已有元素？请说明理由。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 27,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": null
+    },
+    {
+      "component": "reference_answer",
+      "status": "revise",
+      "reason": "与可变性原文矛盾",
+      "suggestion": "按原文修正",
+      "target": {
+        "block_id": "reference_answer",
+        "quote": "元组允许直接替换已有元素，列表不允许，因为元组可变而列表不可变。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": null,
+      "source_anchor": null,
+      "location": {
+        "document_id": "Q1",
+        "block_id": "reference_answer",
+        "quote": "元组允许直接替换已有元素，列表不允许，因为元组可变而列表不可变。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 32,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": null
+    },
+    {
+      "component": "rubric",
+      "status": "pass",
+      "reason": "与教案依据一致",
+      "suggestion": "保留",
+      "target": {
+        "block_id": "rubric",
+        "quote": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。",
+        "occurrence": 0
+      },
+      "lesson_anchor": {
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0
+      },
+      "source_id": null,
+      "source_anchor": null,
+      "location": {
+        "document_id": "Q1",
+        "block_id": "rubric",
+        "quote": "指出列表允许直接替换已有元素占一半分值；说明列表可变、元组不可变并区分容器绑定占另一半分值。不要求讨论元组内部可变对象。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 60,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "lesson_location": {
+        "document_id": "L1",
+        "block_id": "section-1",
+        "quote": "列表是可变序列，可以替换已有元素或追加元素；元组是不可变序列，不能直接替换其中元素。",
+        "occurrence": 0,
+        "start": 0,
+        "end": 42,
+        "line_start": 1,
+        "line_end": 1,
+        "page": null,
+        "paragraph": null,
+        "source_start": 0
+      },
+      "evidence_location": null
+    }
+  ],
+  "usage": {
+    "model": "scripted-offline-fixture",
+    "response_id": "fixture",
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "output_tokens": 0,
+    "reasoning_tokens": 0,
+    "estimated_cost_usd": null,
+    "elapsed_seconds": 0.0
+  }
+}

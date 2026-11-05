@@ -1,3 +1,7 @@
+# V3 补充（2026-11-05）
+
+以团队 V3（`97e04ca`）和个人包 0.3.0 为当前接入目标。下文 R1 的安装与布局说明保留为历史基线。V3 G 使用显式 `sources`，已接通 H→A；不要用旧 R1 适配覆盖新接口。新增 `run_quiz_live` 供团队 `audit_practice` 调用。公共片段见 `learngraph/hg_v3_services_addition.py`；验收脚本见 `learngraph/tools/validate_hg.py`。对接与签收按 [V3 验收说明](../docs/HG_V3_ACCEPTANCE.md)。
+
 # 团队工程接入与复验
 
 本目录保存冯甘雨负责的公共入口、工厂增补片段、接入测试和隔离验证脚本。它依赖团队工程的公共设施，不能作为完整应用启动。已验证基线：2026-10-27 R1，团队提交 `d129c60`；个人包 0.2.0。
