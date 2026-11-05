@@ -62,7 +62,7 @@ class QuizReport(StrictModel):
     context_hash: str
     status: Verdict
     summary: str
-    checks: list[ComponentReview]
+    checks: list[ComponentReview] = Field(min_length=3, max_length=3)
     usage: Usage
 
 

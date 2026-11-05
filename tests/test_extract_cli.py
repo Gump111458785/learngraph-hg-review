@@ -135,6 +135,8 @@ def test_cli_offline_extract_schema_and_no_overwrite(tmp_path, monkeypatch):
         "LessonDraft",
         "HReport",
         "GReport",
+        "QuizDraft",
+        "QuizReport",
     }
 
 

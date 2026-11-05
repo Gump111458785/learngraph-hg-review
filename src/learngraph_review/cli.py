@@ -12,6 +12,7 @@ from .agents import ReviewService, approved_material
 from .errors import ReviewError
 from .extract import extract_file
 from .models import Context, GReport, HReport, LessonDraft, Material
+from .quiz import QuizDraft, QuizReport
 
 
 def _read(path: str):
@@ -75,6 +76,8 @@ def main(argv: list[str] | None = None) -> int:
                     LessonDraft,
                     HReport,
                     GReport,
+                    QuizDraft,
+                    QuizReport,
                 )
             }
         else:

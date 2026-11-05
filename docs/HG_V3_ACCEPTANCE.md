@@ -78,3 +78,7 @@ python -m tools.validate_hg --mode live --max-calls 10 --out outputs/hg-acceptan
 - [G 真实错误教案报告](hg-v3/screenshots/G-真实错误教案报告.png)：问题段落、原文证据、修改建议和 usage。
 
 源 JSON 位于 `examples/hg_v3/live_run_01/reports/`，可与截图逐字核对。
+
+## 数据 Schema
+
+`python -m learngraph_review schemas --out outputs/hg-schemas-new.json` 现在同时导出 QuizDraft/QuizReport 与已有 H/G 格式；QuizReport 恰好包含三个分项。模型响应的目标、来源、块和组件约束按本次输入动态生成，不把示例来源编号当成所有会话的允许值。
