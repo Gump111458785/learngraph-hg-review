@@ -69,3 +69,12 @@ python -m tools.validate_hg --mode live --max-calls 10 --out outputs/hg-acceptan
 ## 课堂汇报
 
 个人模块页覆盖 H 混合资料、G 错误稿→修订稿、练习三组件失败、返修路由和验收边界；案例页标明离线预置，另附真实调用与人工复核结果页。[可编辑汇报文件](hg-v3/冯甘雨-HG-V3-验收汇报.pptx) 已逐页渲染检查，并附真实调用结果及人工复核意见；接收方签收和教学质量问题仍保留待完成。
+
+## 真实运行记录画面
+
+以下图片是本机浏览器打开首批真实 API 报告后的截图，未改写报告中的结果。截图为模块 JSON 记录，不是学生端页面：
+
+- [H 真实准入报告](hg-v3/screenshots/H-真实准入报告.png)：partial、采纳/排除块、原文位置和 usage。
+- [G 真实错误教案报告](hg-v3/screenshots/G-真实错误教案报告.png)：问题段落、原文证据、修改建议和 usage。
+
+源 JSON 位于 `examples/hg_v3/live_run_01/reports/`，可与截图逐字核对。
