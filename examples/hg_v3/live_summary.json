@@ -47,5 +47,11 @@
     "reasoning": "low",
     "lesson_good": "pass",
     "lesson_bad": "revise"
-  }
+  },
+  "human_review_scope": [
+    "batch_01",
+    "batch_02",
+    "batch_05_mini",
+    "batch_06_mini_lessons"
+  ]
 }

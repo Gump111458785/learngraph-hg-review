@@ -19,5 +19,23 @@
     "正常教案与练习被过度返修，不能把教学扩展或措辞偏好当成事实错误"
   ],
   "evidence_guide": "docs/HG_V3_LIVE_REVIEW.md",
-  "recipient_signoffs": "not included; pending members 1/3/6"
+  "recipient_signoffs": "not included; pending members 1/3/6",
+  "supplementary_confirmation": {
+    "reviewer": "冯甘雨",
+    "date": "2026-11-05",
+    "confirmation_source": "用户在本对话明确回复：已核对，同意这四例判断。",
+    "scope": [
+      "live_run_05_mini/quiz_good",
+      "live_run_05_mini/quiz_bad_reference_answer",
+      "live_run_06_mini_lessons/lesson_good",
+      "live_run_06_mini_lessons/lesson_bad"
+    ],
+    "agreed": [
+      "正常练习三项均通过，理由与教案和原文一致",
+      "错误练习仅参考答案返修，题干与评分规则通过",
+      "正常修订教案通过",
+      "错误教案定位 section-1 字符 0:37，按原文恢复列表可变、元组不可变"
+    ],
+    "limitations": "仅确认上述四例判断；不代表多主题稳定性或成员 1/3/6 接收签收。"
+  }
 }
