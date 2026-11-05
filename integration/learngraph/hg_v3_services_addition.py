@@ -23,5 +23,3 @@ def audit_practice(draft, quiz, evidence, sources):
     return AuditDecision(
         passed=report.status == "pass", issues=issues, mode="live", report_path=str(path)
     )
-
-

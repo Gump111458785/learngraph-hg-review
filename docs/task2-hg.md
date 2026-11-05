@@ -6,7 +6,11 @@
 补充上传资料进入 A 之前的 H，同时实现 D 之后、E 之前的 G。
 不实现 A 的联网检索、D 的教材生成、E/F 的出题评分或组长负责的完整 LangGraph 主流程。
 
-## 2026-10-27 R1 对齐
+## 2026-11-05 V3 补充
+
+当前个人包 0.3.0 对齐 V3：G 支持显式 sources 会话原文，增加练习三组件审核。H→A 已接通，来源缺失可在模型调用前形成 evidence 问题单和补证查询。独立测试 84 项通过，团队全量 255 项通过。实际案例、运行和人工签收入口以 [V3 验收与交接](HG_V3_ACCEPTANCE.md) 为准；真实调用仍待明确授权，签收待接收方填写。
+
+## 2026-10-27 R1 历史对齐
 
 个人包 0.2.0 已对齐团队 `d129c60`：SDK 依赖放宽到 `>=2,<4`，安装默认固定团队 3.37.0；个人使用 src 布局，团队使用根目录单份包。新增公共状态/报告路径映射、项目根目录路径解析、保存失败阻断，并兼容旧公共合同。独立 72 项测试在 SDK 2.54.0 与 3.37.0 均通过，替换模块的团队副本 120 项通过。复现与接入步骤见 [框架对齐记录](FRAMEWORK_ALIGNMENT.md) 和 [integration/README.md](../integration/README.md)。
 
@@ -131,9 +135,9 @@ python -m learngraph_review g --context examples/context.json --lesson examples/
 H 公共报告：全采纳=accepted，全拒绝=excluded；部分采纳和待复核=unreviewed。
 原因是 v0.1 的文件级公共协议不能绑定块级准入，不能把含拒绝块的原文件整体交给 A。
 R1 在 reason 之外新增 `review_status`、`report_path` 和 `approved_sources_path`，后者指向仅已采纳块的 Material 数组 JSON；A 负责人应读取该文件，不能重新读取含拒绝块的整个原文件。
-团队 Streamlit 现已保存真实上传字节，并提供隔离、大小限制和解析预检；但 A 尚未消费采纳块，主图仍在 H→A 待对接处阻塞。
+团队 Streamlit 现已保存真实上传字节，并提供隔离、大小限制和解析预检；V3 的 A 已消费仅采纳块，原文按会话直接传给 G，拒绝段不进入证据。
 
-G 公共入口要求 `HG_SOURCES_FILE` 指向 **Material 数组 JSON**，由 A/联调者提供真实提取原文。
+V3 的 G 通过 `sources` 参数接收当前会话 **Material 数组**；旧独立公共入口可用 `HG_SOURCES_FILE` 原文 JSON。
 其中 Material.id 对应 EvidenceItem.source_id，Material.source 与 EvidenceItem.locator 的 `#` 前缀一致。
 不能只把 EvidenceItem.claim 复制为原文。缺少或不匹配时阻断，组长的 ValueError guard 会持久化 blocked。
 v0.1 的 D 只有来源 ID，公共适配层因此使用来源级引用，位置对应合并提取文本；

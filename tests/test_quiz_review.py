@@ -101,5 +101,3 @@ def test_uncertain_component_requires_manual_review():
         sources,
     )
     assert report.status == "needs_review"
-
-

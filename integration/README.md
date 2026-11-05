@@ -38,4 +38,4 @@ Windows 的解释器通常为 `.venv/Scripts/python.exe`，含空格的路径请
 
 本机设置 Key、`HG_REVIEW_MODE=live`、G 所需 `HG_SOURCES_FILE`。先核对 source_id 和 locator，再执行会付费的调用。默认相对 registry/输出路径基于团队项目根目录；可用 `HG_PROJECT_ROOT` 明确指定根目录。保存失败会抛出 `ReviewError`，不会交付无记录的通过结果。
 
-R1 已保存上传字节，但 A 尚未消费 H 的仅采纳块 JSON，主图会明确阻塞；G 的真实来源原文也需要 A/联调者提供。本次没有代替其他成员完成这些功能，也没有执行真实付费 API 联调。公共协议与内部丰富模型的区别见 [任务 2 文档](../docs/task2-hg.md) 和 [对齐记录](../docs/FRAMEWORK_ALIGNMENT.md)。
+上述 R1 遗留交接在 V3 已由团队接入：A 消费 H 采纳块，G 直接接收当前会话原文。本次没有代替其他成员完成这些功能，也没有执行真实付费 API 联调。公共协议与内部丰富模型的区别见 [任务 2 文档](../docs/task2-hg.md) 和 [对齐记录](../docs/FRAMEWORK_ALIGNMENT.md)。
